@@ -1,0 +1,37 @@
+@import "../../theme/components/current-coin-info";
+
+jb-page-wallet {
+
+}
+
+.wallets-total-balance {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+
+    &__title {
+        width: 59px;
+        padding-right: 12px;
+        font-size: 10px;
+        font-weight: 500;
+        font-family: $rubik-font;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.1;
+        letter-spacing: -0.3px;
+        text-transform: uppercase;
+        color: transparentize(#2b2b2c, .4);
+    }
+
+    &__content {
+        width: calc(100% - 59px);
+    }
+
+    .current-coin-info__wrap {
+        margin-bottom: 0;
+    }
+}
+
+.wallets {
+
+}

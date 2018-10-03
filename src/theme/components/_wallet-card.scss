@@ -1,0 +1,107 @@
+.wallet-card {
+    position: relative;
+    padding: 16px 32px 16px 16px;
+    margin-bottom: 8px;
+    background-color: #f3f5f9;
+
+    &_white {
+        background-color: #fff;
+        border: 1px solid #edeff1;
+    }
+
+    &__qr {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 32px;
+        height: 32px;
+        background: {
+            image: url("../../assets/icon/icon-qr-code-on-white-no-border.svg");
+            repeat: no-repeat;
+            position: center;
+            size: contain;
+        };
+    }
+
+    &__name {
+        display: block;
+        margin-bottom: 16px;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: $rubik-font;
+        line-height: 1.25;
+        letter-spacing: -0.5px;
+        color: #2b2b2c;
+    }
+
+    &__price-wrap {
+        width: calc(100% - 60px);
+    }
+
+    &__price {
+        display: flex;
+        align-items: flex-start;
+        font-size: 40px;
+        font-weight: 500;
+        font-style: normal;
+        font-family: $rubik-font;
+        letter-spacing: -2px;
+        color: #2b2b2c;
+
+        &-value {
+            display: block;
+        }
+
+        &-currency {
+            padding: 5px;
+            font-size: 16px;
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+        }
+    }
+
+    &__difference-price {
+        display: block;
+        padding-top: 15px;
+        font-size: 14px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        color: #2b2b2c;
+
+        &.down {
+            color: #e89a00;
+        }
+
+        &.up {
+            color: color($colors, secondary);
+        }
+    }
+
+    &__sub-price {
+        display: block;
+        font-size: 14px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.43;
+        letter-spacing: normal;
+        color: #2b2b2c;
+    }
+
+    &__more {
+        position: absolute;
+        right: 16px;
+        bottom: 12px;
+        width: 24px;
+        height: 24px;
+        background: {
+            image: url("../../assets/icon/icon-more_black.svg");
+            repeat: no-repeat;
+            position: center;
+            size: contain;
+        };
+    }
+}

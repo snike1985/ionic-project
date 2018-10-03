@@ -1,0 +1,12 @@
+<ion-nav #mainNav [root]="rootPage"></ion-nav>
+
+<ion-tabs [class.active]="actionSheetModal">
+
+    <ion-tab tabIcon="dashboard" [root]="dashboard" (ionSelect)="closeActionSheet()"></ion-tab>
+    <ion-tab tabIcon="wallet" [root]="wallets" (ionSelect)="closeActionSheet()"></ion-tab>
+    <ion-tab tabIcon="plus" (ionSelect)="toggleActionSheet($event)"></ion-tab>
+    <ion-tab tabIcon="card" [root]="card" (ionSelect)="closeActionSheet()"></ion-tab>
+    <ion-tab tabIcon="more" [root]="more" (ionSelect)="closeActionSheet()"></ion-tab>
+
+</ion-tabs>
+

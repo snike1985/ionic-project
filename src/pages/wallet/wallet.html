@@ -1,0 +1,194 @@
+
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{ wallet.walletName }}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content (ionScroll)="onScroll()">
+
+    <div class="wallet-page">
+        <div class="wallet-page__navigate">
+            <div class="container">
+                <div class="wallet-page__navigate-item"
+                     *ngFor="let tab of tabs"
+                     (click)="toggleTab(tab)"
+                     [class.active]="tab.isActive">{{ tab.name }}
+                </div>
+            </div>
+        </div>
+
+        <div [ngSwitch]="walletTab">
+
+            <div class="wallet" *ngSwitchCase="tabs[0].name">
+
+                <div class="container">
+
+                    <div class="action-list">
+
+                        <div class="action-list__item">
+                            <div class="wallet-card wallet-card_white">
+                                <span class="wallet-card__qr" (click)="toReciveCoin()"></span>
+                                <div class="wallet-card__price-wrap">
+                                    <div class="wallet-card__price">
+                                        <div class="wallet-card__price-value"
+                                             [fittext]="true"
+                                             [activateOnResize]="true"
+                                             [useMaxFontSize]="true"
+                                             [minFontSize]="10">{{ wallet.price.count }}
+                                        </div>
+                                        <span class="wallet-card__price-currency">{{ wallet.currency }}</span>
+                                    </div>
+                                </div>
+                                <div class="wallet-card__sub-price">
+                                    {{ wallet.subPrice.count | number:'.1-20' }} {{ wallet.subPrice.name }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="wallet.walletType === 'fiat'">
+
+                            <div class="action-list__item">
+                                <div class="action-link action-link_grey">
+                                    <i class="action-link__icon">
+                                        <img width="48" height="48" src="../assets/icon/icon-receive.svg" alt="">
+                                    </i>
+                                    <div class="action-link__content">
+                                        <strong class="action-link__title">Receive</strong>
+                                        <span class="action-link__text">Crypto to {{ wallet.currency }} wallet</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="action-list__item" (click)="openDepositModal()">
+                                <div class="action-link action-link_grey">
+                                    <i class="action-link__icon"><img width="48" height="48"
+                                                                      src="../assets/icon/icon-buy.svg" alt=""></i>
+                                    <div class="action-link__content">
+                                        <strong class="action-link__title">Deposit</strong>
+                                        <span class="action-link__text">{{ wallet.currency }} to your wallet</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="action-list__item">
+                                <div class="action-link action-link_grey">
+                                    <i class="action-link__icon">
+                                        <img width="48" height="48" src="../assets/icon/icon-send.svg" alt="">
+                                    </i>
+                                    <div class="action-link__content">
+                                        <strong class="action-link__title">Withdraw</strong>
+                                        <span class="action-link__text">{{ wallet.currency }} to your bank account</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div *ngIf="wallet.walletType === 'crypto'">
+
+                            <div class="action-list__item">
+                                <div class="action-link action-link_grey">
+                                    <i class="action-link__icon">
+                                        <img width="48" height="48" src="../assets/icon/icon-send.svg" alt="">
+                                    </i>
+                                    <div class="action-link__content">
+                                        <strong class="action-link__title">Send</strong>
+                                        <span class="action-link__text">{{ wallet.currency }} to someone’s wallet</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="action-list__item" (click)="navCtrl.push(buyCoinsPage)">
+                                <div class="action-link action-link_grey">
+                                    <i class="action-link__icon"><img width="48" height="48"
+                                                                      src="../assets/icon/icon-buy.svg" alt=""></i>
+                                    <div class="action-link__content">
+                                        <strong class="action-link__title">Buy</strong>
+                                        <span class="action-link__text">Crypto for traditional money</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="action-list__item">
+                                <div class="action-link action-link_grey">
+                                    <i class="action-link__icon"><img width="48" height="48"
+                                                                      src="../assets/icon/icon-sell.svg" alt=""></i>
+                                    <div class="action-link__content">
+                                        <strong class="action-link__title">Sell</strong>
+                                        <span class="action-link__text">Your coins for Fiat</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="action-list__item" (click)="openModal(exchangeCoinsModal)">
+                                <div class="action-link action-link_grey">
+                                    <i class="action-link__icon"><img width="48" height="48"
+                                                                      src="../assets/icon/icon-exchange.svg" alt=""></i>
+                                    <div class="action-link__content">
+                                        <strong class="action-link__title">Exchange</strong>
+                                        <span class="action-link__text">Crypto to Crypto</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <jb-buy-coin></jb-buy-coin>
+
+            </div>
+
+            <div class="transactions" *ngSwitchCase="tabs[1].name">
+
+                <div class="transactions__head">
+                    <div class="custom-select" (click)="changePeriod()">
+                        <div class="custom-select__title">Period:</div>
+                        <div class="custom-select__value">{{ transactionsFilter.period }}</div>
+                    </div>
+                    <div class="custom-select" (click)="changeOperation()">
+                        <div class="custom-select__title">Operation:</div>
+                        <div class="custom-select__value">{{ transactionsFilter.operation }}</div>
+                    </div>
+                </div>
+
+                <div class="transactions__list" *ngFor="let transaction of transactions">
+                    <div class="custom-date">
+                        <div class="custom-date__wrap">
+                            {{ transaction.date*1000 | date: 'longDate' }}
+                        </div>
+                    </div>
+                    <div class="transactions__item"
+                         [ngClass]="{'pending': operation.status === 'pending', 'up': operation.value > 0}"
+                         *ngFor="let operation of transaction.operations" (click)="showTransactionDetails(operation)">
+                        <div class="transactions__icon" [ngSwitch]="operation.icon">
+                            <img *ngSwitchCase="'exchange'" src="../../assets/icon/transactions/icon-exchange-small.svg"
+                                 alt="">
+                            <img *ngSwitchCase="'send'" src="../../assets/icon/transactions/icon-send-small.svg" alt="">
+                            <img *ngSwitchCase="'buy'" src="../../assets/icon/transactions/icon-receive-small.svg"
+                                 alt="">
+                        </div>
+                        <div class="transactions__name">{{ operation.name }}</div>
+                        {{ operation.value }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ion-content>
+
+<div class="transactions-fixed-head" [class.fixed]="contentFilterFixed" [style.top]="fixedFilterTop + 'px'">
+    <div class="custom-select" (click)="changePeriod()">
+        <div class="custom-select__title">Period:</div>
+        <div class="custom-select__value">{{ transactionsFilter.period }}</div>
+    </div>
+    <div class="custom-select" (click)="changeOperation()">
+        <div class="custom-select__title">Operation:</div>
+        <div class="custom-select__value">{{ transactionsFilter.operation }}</div>
+    </div>
+</div>

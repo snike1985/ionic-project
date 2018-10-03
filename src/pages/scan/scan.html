@@ -1,0 +1,36 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{ title }}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <!--scan-->
+    <div class="scan">
+
+        <!--scan__centered-->
+        <div class="scan__centered">
+
+            <!--scan__timer-->
+            <div class="scan__timer">{{ duration }} sec</div>
+            <!--/scan__timer-->
+
+            <!--scan__image-->
+            <div class="scan__image" [style.background-image]="'url(' + image.url + ')' | jbSafe: 'style'"></div>
+            <!--/scan__image-->
+
+            <!--scan__text-wrap-->
+            <p class="scan__text">Document validation is in progress …</p>
+            <!--/scan__text-wrap-->
+
+        </div>
+        <!--/scan__centered-->
+
+    </div>
+    <!--/scan-->
+
+</ion-content>

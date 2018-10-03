@@ -1,0 +1,50 @@
+
+.main-list {
+    margin-top: 0 !important;
+
+    &__item {
+        margin-bottom: $main-margin-end;
+        padding: 16px 16px 15px;
+        background-color: #f3f5f9;
+        border:none;
+        font-family: $roboto-font;
+        font-size: 12px;
+        line-height: 1.33;
+        color: rgba(43, 43, 44, 0.6);
+
+        &:first-child {
+            border-top: none !important;
+        }
+        &:last-child {
+            border-bottom: none !important;
+        }
+        strong {
+            font-family: $rubik-font;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            color: color($colors, primary);
+        }
+        span {
+            display: block;
+            margin-top: 4px;
+        }
+        .item-inner {
+            width: 100%;
+            min-height: auto;
+            padding-right: 48px !important;
+            border-bottom: none !important;
+            background: {
+                image: url(../../assets/icon/icon-arrow-cta.svg) !important;
+                size: 15px 15px !important;
+                repeat: no-repeat;
+                position: right center !important;
+            };
+
+            ion-label {
+                margin: 0 !important;
+                white-space: normal;
+            }
+        }
+    }
+}

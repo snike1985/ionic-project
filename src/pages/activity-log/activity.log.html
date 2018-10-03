@@ -1,0 +1,50 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Activity log</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <!--activity-log-->
+    <div class="activity-log">
+
+        <!--activity-log__item-->
+        <div class="activity-log__item" *ngFor="let log of activityLogs; let i = index">
+
+            <dl>
+                <dt class="activity-log__item-title">{{ log.type }}</dt>
+                <dd>{{ log.date | date:'shortTime' }}</dd>
+            </dl>
+
+            <dl>
+                <dt>Country</dt>
+                <dd>
+                    <img src="../../assets/flags/4x3/ua.svg" alt="">
+                    {{ log.country }}
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>IP</dt>
+                <dd>{{ log.ip }}</dd>
+            </dl>
+
+            <dl>
+                <dt>Source</dt>
+                <dd>{{ log.source }}</dd>
+            </dl>
+
+            <span *ngIf="checkDate(i, log)" class="activity-log__item-date">{{ log.date | date:'longDate' }}</span>
+
+        </div>
+        <!--/activity-log__item-->
+
+    </div>
+    <!--/activity-log-->
+
+</ion-content>

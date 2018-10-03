@@ -1,0 +1,73 @@
+<!--
+  Generated template for the WalletsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Wallets</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <div class="container">
+        <div class="wallets-total-balance">
+            <div class="wallets-total-balance__title">
+                total
+                balance:
+            </div>
+            <div class="wallets-total-balance__content">
+                <div class="custom-select custom-select_currency">
+                    <div class="custom-select__title">{{ prices[0].currentPrice['currentCurrency'] }}</div>
+                    <div class="custom-select__value" (click)="presentActionSheet()">{{ currentCurrency }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-list">
+            <div class="action-list__item">
+
+                <div class="wallet-card"
+                     *ngFor="let wallet of wallets"
+                     (click)="clickItem($event, wallet)">
+
+                    <span class="wallet-card__qr" (click)="shareWallet($event, wallet)"></span>
+
+                    <div class="wallet-card__name">{{ wallet.walletName }}</div>
+
+                    <div class="wallet-card__price-wrap">
+                        <div class="wallet-card__price">
+
+                            <div class="wallet-card__price-value"
+                                 [fittext]="true"
+                                 [activateOnResize]="true"
+                                 [useMaxFontSize]="true"
+                                 [minFontSize]="10">{{ wallet.price.count | number:'.1-20' }}
+                            </div>
+
+                            <span class="wallet-card__price-currency">{{ wallet.price.name }}</span>
+                        </div>
+                    </div>
+
+                    <div class="wallet-card__sub-price">{{ wallet.subPrice.count | number:'.1-20' }} {{ wallet.subPrice.name }}</div>
+
+                    <div class="wallet-card__difference-price"
+                         *ngIf="wallet['lastChangePercent']"
+                         [ngClass]="{'up': wallet.lastChangePercent > 0, 'down': wallet.lastChangePercent < 0}">
+                        {{ wallet['lastChangePercent'] }}
+                    </div>
+
+                    <span class="wallet-card__more"></span>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</ion-content>

@@ -1,0 +1,62 @@
+<div class="onboard">
+
+    <h1 class="onboard__title">
+        {{ title }}
+        <span>Cryptocurrency</span>
+    </h1>
+
+    <ion-slides pager class="onboard__slider">
+
+        <ion-slide class="onboard__slider-item">
+            <div>
+                <img src="../assets/icon/icon-shield-on-white.svg" alt="">
+                <h2>A private vault at the palm
+                    of your hand</h2>
+            </div>
+        </ion-slide>
+
+        <ion-slide class="onboard__slider-item">
+            <div>
+                <img src="../assets/icon/icon-lock.svg" alt="">
+                <h2>The highest cryptography
+                    standarts</h2>
+            </div>
+        </ion-slide>
+
+        <ion-slide class="onboard__slider-item">
+            <div>
+                <img src="../assets/icon/low-fee.svg" alt="low-fee">
+                <h2>Exchange cryptocurrency
+                    at the best rate</h2>
+            </div>
+        </ion-slide>
+
+
+        <ion-slide class="onboard__slider-item">
+            <div>
+                <img src="../assets/icon/account-comf.svg" alt="">
+                <h2>Immediate Account
+                    Confirmation</h2>
+            </div>
+        </ion-slide>
+
+    </ion-slides>
+
+    <ion-grid class="onboard__buttons">
+
+        <ion-row class="">
+
+            <ion-col col-6>
+                <button ion-button outline (click)="toLoginPage()">log in</button>
+            </ion-col>
+
+            <ion-col col-6>
+                <button ion-button (click)="toRegistrationPage()">register</button>
+            </ion-col>
+
+        </ion-row>
+
+    </ion-grid>
+
+</div>
+

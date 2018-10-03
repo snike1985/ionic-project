@@ -1,0 +1,71 @@
+<!--main-modal-->
+<div class="main-modal full-page">
+
+    <ion-header>
+
+        <ion-toolbar>
+
+            <ion-buttons start>
+                <button ion-button
+                        type="button"
+                        color="primary"
+                        icon-only
+                        (click)="closeModal()">
+                    <ion-icon name="md-close"></ion-icon>
+                </button>
+            </ion-buttons>
+
+            <ion-title>
+                Touch ID to Log In
+            </ion-title>
+
+        </ion-toolbar>
+
+    </ion-header>
+
+    <ion-content padding>
+
+        <!--main-form-->
+        <form class="main-form" [formGroup]="passwordForm">
+
+            <div class="change-code">
+
+                <p class="change-code__text change-code__text_small">To Start Using {{ setBiometricText() }} Please Enter Your Account Password</p>
+
+                <fieldset class="change-code__inner">
+
+                    <ion-label stacked>Account Password</ion-label>
+
+                    <jb-password [control]="passwordForm.controls['password']"
+                                 [(isLeast)]="isLeast"></jb-password>
+
+                </fieldset>
+
+            </div>
+
+        </form>
+        <!--/main-form-->
+
+    </ion-content>
+
+    <ion-footer>
+
+        <div class="footer__wrap">
+            <button ion-button block
+                    type="button"
+                    [disabled]="!isLeast"
+                    (click)="setBiometric()">
+
+                Enable {{ setBiometricText() }}
+
+            </button>
+        </div>
+
+    </ion-footer>
+
+</div>
+<!--/main-modal-->
+
+
+
+

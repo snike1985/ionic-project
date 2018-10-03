@@ -1,0 +1,90 @@
+
+.note {
+    margin-bottom: 24px;
+    font-family: $roboto-font;
+    font-size: 14px;
+    line-height: 1.43;
+    color: color($colors, dark);
+
+    &_dark {
+        background: #f3f5f9;
+    }
+    &_alert {
+        background: #eb001b;
+        color: #fff;
+    }
+    &__title {
+        margin-bottom: 16px;
+        margin-top: 0;
+        font-family: $rubik-font;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 1.1;
+        letter-spacing: -0.6px;
+
+        &:after {
+            position: relative;
+            top: -1px;
+            display: inline-block;
+            vertical-align: middle;
+            width: 16px;
+            height: 16px;
+            margin-left: 9px;
+            background-image: url(../../assets/icon/icon-alert-small.svg);
+            background-size: contain;
+            content: '';
+        }
+        &_simple:after{
+            display: none;
+        }
+    }
+    &__info {
+
+        p {
+            font-size: 12px;
+            line-height: 1.33;
+            font-weight: bold;
+        }
+        strong {
+            font-family: $rubik-font;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.6px;
+            text-transform: uppercase;
+        }
+    }
+    p {
+        margin-top: 0;
+        margin-bottom: 18px;
+
+        &:last-of-type {
+            margin: 0;
+        }
+    }
+    ul {
+        list-style: none;
+        margin: 0;
+        padding-top: 8px;
+
+        li {
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 37px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+            &:before {
+                position: absolute;
+                top: 8px;
+                left: 13px;
+                width: 3px;
+                height: 3px;
+                border-radius: 50%;
+                background: color($colors, dark);
+                content: '';
+            }
+        }
+    }
+}

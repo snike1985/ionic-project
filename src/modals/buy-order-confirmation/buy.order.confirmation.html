@@ -1,0 +1,56 @@
+<ion-content class="dark-bg popup-streched-content buy-confirmation">
+
+    <div class="content-card content-card_full-width" padding>
+        <h2 class="buy-confirmation__title">Order Confirmation {{ receivedParams.number }}</h2>
+
+        <dl class="details-list-big">
+
+            <dt>Status:</dt>
+            <dd>
+                <span class="buy-confirmation__status">{{ statusTexts[receivedParams.status] }}</span>
+            </dd>
+
+            <dt>Date:</dt>
+            <dd>
+                {{ receivedParams.date | date:' dd.mm.yyyy HH:mm:ss' }}
+            </dd>
+
+            <dt>Exchange rate:</dt>
+            <dd>
+                1 {{ receivedParams.buyCurrency }} = {{ receivedParams.rate }} {{ receivedParams.sellCurrency }}
+            </dd>
+
+
+            <dt>Processing fee:</dt>
+            <dd>{{ receivedParams.sellAmmount*receivedParams.exchangeFee | number:'1.2-2' }}
+                {{ receivedParams.sellCurrency }}
+            </dd>
+
+            <dt>Total spend:</dt>
+            <dd>{{ receivedParams.sellAmmount | number:'1.2-2' }} {{ receivedParams.sellCurrency }}</dd>
+
+            <dt>Total received:</dt>
+            <dd>
+                <strong>{{ roundedIncome }} {{ receivedParams.buyCurrency }}</strong>
+            </dd>
+
+        </dl>
+
+        <button ion-button block
+                (click)="closeModal()"
+                type="button">
+            Got it
+        </button>
+
+    </div>
+
+    <div class="content-card content-card__full-height">
+        <h2 class="buy-confirmation__title">What is Next?</h2>
+        <p class="buy-confirmation__paragraph">We will send you an email notification once we have processed your
+            transaction.</p>
+        <h2 class="buy-confirmation__title">How long does it take?</h2>
+        <p class="buy-confirmation__paragraph">It usualy takes 30-60 minutes but it may take up to 2 days. Contact <a
+            href="#">support</a> if you have any questions.</p>
+    </div>
+
+</ion-content>

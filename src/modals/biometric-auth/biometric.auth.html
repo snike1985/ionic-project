@@ -1,0 +1,71 @@
+<!--main-modal-->
+<div class="main-modal full-page">
+
+    <ion-header>
+
+        <ion-toolbar>
+
+            <ion-buttons start>
+                <button ion-button
+                        type="button"
+                        color="primary"
+                        icon-only
+                        (click)="closeModal()">
+                    <ion-icon name="md-close"></ion-icon>
+                </button>
+            </ion-buttons>
+
+            <ion-title>
+                Touch ID Setup
+            </ion-title>
+
+        </ion-toolbar>
+
+    </ion-header>
+
+    <ion-content padding>
+
+        <!--main-modal__centered-->
+        <div class="main-modal__centered" padding>
+
+            <div class="biometric-auth">
+
+                <!--biometric-auth__icon-->
+                <div class="biometric-auth__icon">
+                    <img width="60" src="../assets/icon/{{ isFaceId === 'face' ? 'icon-face-id.svg' : 'icon-fingerprint.svg' }}" alt="biometric">
+                </div>
+                <!--/biometric-auth__icon-->
+
+                <!--biometric-auth__title-->
+                <h3 class="biometric-auth__title">
+                    We strongly recommend setting up {{ setBiometricText() }} for enhanced security & easy access to our app
+                </h3>
+                <!--/biometric-auth__title-->
+
+            </div>
+
+        </div>
+        <!--/main-modal__centered-->
+
+    </ion-content>
+
+    <ion-footer>
+
+        <div class="footer__wrap">
+            <button ion-button block
+                    type="button"
+                    (click)="checkBiometric()">
+
+                Use {{ setBiometricText() }}
+
+            </button>
+        </div>
+
+    </ion-footer>
+
+</div>
+<!--/main-modal-->
+
+
+
+

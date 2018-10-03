@@ -1,0 +1,44 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>About Jubiter</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <div class="about">
+
+        <ion-list class="main-list">
+
+            <button class="main-list__item"
+                    ion-item
+                    *ngFor="let item of menuList">
+
+                <strong>{{ item.title }}</strong>
+            </button>
+
+        </ion-list>
+
+        <!--footer-->
+        <div class="main-footer">
+
+            <!--footer__logo-->
+            <div class="main-footer__logo">
+                <img src="../../assets/imgs/black-logo.svg" alt="Jubiter">
+            </div>
+            <!--/footer__logo-->
+
+            <!--footer__info-->
+            <div class="main-footer__info">App Version 1.1.11 (7250)</div>
+            <!--/footer__info-->
+
+        </div>
+        <!--/footer-->
+
+    </div>
+
+</ion-content>

@@ -1,0 +1,25 @@
+.address {
+    margin-bottom: 24px;
+    color: color($colors, dark);
+
+    dt {
+        font-family: $rubik-font;
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.43;
+        letter-spacing: -0.5px;
+        text-transform: uppercase;
+        color: color($colors, dark);
+    }
+    dd {
+        margin: 0;
+        font-size: 12px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+    }
+}

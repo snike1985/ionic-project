@@ -1,0 +1,35 @@
+
+.info {
+
+    p {
+        margin-bottom: 22px;
+        font-family: $roboto-font;
+        font-size: 14px;
+        line-height: 1.43;
+        color: color($colors, dark);
+    }
+    &__link {
+        position: relative;
+        display: inline-block;
+        padding-left: 26px;
+        font-family: $rubik-font;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: -0.3px;
+        text-transform: uppercase;
+        color: color($colors, primary);
+
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            transform: translateY(-50%);
+            margin-top: -1px;
+            background-image:  url(../../assets/icon/icon-help.svg);
+            background-size: contain;
+            content: '';
+        }
+    }
+}

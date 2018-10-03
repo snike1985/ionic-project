@@ -1,0 +1,15 @@
+<div class="scroll-steps" #scrollStepsContainer>
+    <div class="scroll-steps__item"
+         *ngFor="let item of items; let index = index"
+         [class.marked]="activeStep > index"
+         [class.active]="activeStep == index">
+
+        <div class="scroll-steps__nubmer">
+            {{ activeStep > index ? '' : index + 1 }}
+        </div>
+        <div class="scroll-steps__text">
+            {{ item.title }}
+        </div>
+
+    </div>
+</div>

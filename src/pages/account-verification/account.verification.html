@@ -1,0 +1,109 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Account verification</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="dark-bg">
+
+    <!--content-card-->
+    <div class="content-card">
+
+        <!--info-->
+        <div class="info">
+
+            <p>
+                Verify your account to open all of the possibilities of the Jubiter platform.
+            </p>
+
+            <!--info__link-->
+            <a class="info__link">Verification help</a>
+            <!--/info__link-->
+
+        </div>
+        <!--/info-->
+
+    </div>
+    <!--/content-card-->
+
+    <!--levels-->
+    <div class="levels">
+
+        <!--levels__item-->
+        <div class="levels__item content-card"
+             *ngFor="let item of verificatonModel">
+
+            <!--levels__item-title-->
+            <h2 class="levels__item-title">
+                {{ item.title }}
+
+                <span *ngIf="checkAllSet(item)" class="levels__item-status confirm">all set</span>
+            </h2>
+            <!--/levels__item-title-->
+
+            <!--levels__item-text-->
+            <div class="levels__item-text">
+                {{ item.text }}
+
+                <button *ngIf="checkAllSet(item)"
+                        (click)="item.disclose = !item.disclose"
+                        class="levels__item-disclose">
+                    Disclose
+                </button>
+            </div>
+            <!--/levels__item-text-->
+
+            <!--levels__item-cards-->
+            <div class="levels__item-cards"
+                 *ngIf="!item.disclose"
+                 [@SlideIn]>
+
+                <!--levels__item-card-->
+                <div class="levels__item-card" *ngFor="let card of item.verificatonItems">
+
+                    <h3>
+                        {{ card.name }}
+
+                        <span *ngIf="card.isPending" class="levels__item-status pending">pending</span>
+                    </h3>
+
+                    <p>{{ card.value || '--' }}</p>
+
+                    <div class="levels__item-card-status"
+                         [ngClass]="{
+                                    'rejected': card.isRejected,
+                                    'confirm': card.isVerified
+                                  }">
+
+                        <span *ngIf="card.isVerified">done</span>
+                        <span *ngIf="card.isRejected">rejected</span>
+
+                    </div>
+
+                    <button ion-button small block
+                            (click)="toVerified(card.type)"
+                            [disabled]="card.isPending"
+                            *ngIf="!card.isVerified">
+
+                        <span *ngIf="!card.isPending">{{ card.btnText }}</span>
+                        <span *ngIf="card.isPending">verify</span>
+
+                    </button>
+
+                </div>
+                <!--/levels__item-card-->
+
+            </div>
+            <!--/levels__item-cards-->
+
+        </div>
+        <!--/levels__item-->
+
+    </div>
+    <!--/levels-->
+
+</ion-content>

@@ -1,0 +1,52 @@
+
+.tabs-navigate {
+
+    &_fixed {
+        opacity: 0;
+        visibility: hidden;
+        z-index: 100;
+        position: fixed;
+        width: 100%;
+        left: 0;
+        padding-left: $main-padding;
+        padding-right: $main-padding;
+        background: #fff;
+        box-shadow: 0 6px 12px 0 rgba(26, 55, 79, 0.08);
+
+        &.fixed {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    .container {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    &__item {
+        display: inline-block;
+        padding: 13px 0;
+        margin-left: 24px;
+        border-bottom: 2px solid transparent;
+        font-size: 14px;
+        font-family: $rubik-font;
+        font-weight: 500;
+        line-height: 1.43;
+        letter-spacing: -0.5px;
+        text-align: center;
+        color: rgba(44, 43, 43, 0.5);
+        text-transform: capitalize;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &.active {
+            border-color: color($colors, primary);
+            color: #2c2b2b;
+        }
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+}

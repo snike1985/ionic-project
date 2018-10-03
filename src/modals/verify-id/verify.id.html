@@ -1,0 +1,138 @@
+
+<ion-header>
+
+    <ion-toolbar>
+
+        <ion-buttons start>
+            <button ion-button
+                    type="button"
+                    color="primary"
+                    icon-only
+                    (click)="closeModal()">
+                <ion-icon name="md-close"></ion-icon>
+            </button>
+        </ion-buttons>
+
+        <ion-title>
+            Verify ID
+        </ion-title>
+
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+
+    <div class="levels" *ngIf="!curData.isPending && !curData.isVerified" [@VisibilityChanged]>
+
+        <!--levels__text-->
+        <p class="levels__text">
+            Please upload a photo of your identity document. To make sure your application is accepted, please read the requirements first.
+        </p>
+        <!--/levels__text-->
+
+        <jb-upload-document [data]="curData"></jb-upload-document>
+
+    </div>
+
+    <!--success-msg-->
+    <div class="success-msg full-page" *ngIf="curData.isPending" [@VisibilityChanged]>
+
+        <ion-content>
+
+            <!--success-msg__centered-->
+            <div class="success-msg__centered">
+
+                <!--success-msg__icon-->
+                <div class="success-msg__icon">
+                    <img width="128" height="128" src="../assets/imgs/pending.svg" alt="">
+                </div>
+                <!--/success-msg__icon-->
+
+                <!--success-msg__title-->
+                <h2 class="success-msg__title">
+                    Pending Verification
+                </h2>
+                <!--/success-msg__title-->
+
+                <!--success-msg__text-->
+                <p class="success-msg__text">
+                    We are validating your ID, you can proceed to use the application as if your identify has been confirmed for the time being. We will update you shortly.
+                </p>
+                <!--/success-msg__text-->
+
+            </div>
+            <!--/success-msg__centered-->
+
+        </ion-content>
+
+        <ion-footer>
+
+            <div class="footer__wrap">
+
+                <button ion-button block
+                        (click)="nextStep()"
+                        type="button">
+                    proceed to telephone verification
+                </button>
+
+            </div>
+
+        </ion-footer>
+
+    </div>
+    <!--/success-msg-->
+
+    <!--success-msg-->
+    <div class="success-msg full-page" *ngIf="curData.isVerified" [@VisibilityChanged]>
+
+        <ion-content>
+
+            <!--success-msg__centered-->
+            <div class="success-msg__centered">
+
+                <!--success-msg__icon-->
+                <div class="success-msg__icon">
+                    <img width="128" height="128" src="../assets/imgs/id-verified.svg" alt="">
+                </div>
+                <!--/success-msg__icon-->
+
+                <!--success-msg__title-->
+                <h2 class="success-msg__title">
+                    Your ID  Was Verified
+                </h2>
+                <!--/success-msg__title-->
+
+                <!--success-msg__level-->
+                <div class="success-msg__level">
+
+                    <strong>Level 3</strong>
+                    <p>Enhanced verification</p>
+
+                </div>
+                <!--/success-msg__level-->
+
+            </div>
+            <!--/success-msg__centered-->
+
+        </ion-content>
+
+        <ion-footer>
+
+            <div class="footer__wrap">
+
+                <button ion-button block
+                        (click)="nextStep()"
+                        type="button">
+                    proceed to telephone verification
+                </button>
+
+            </div>
+
+        </ion-footer>
+
+    </div>
+    <!--/success-msg-->
+
+
+</ion-content>

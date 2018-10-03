@@ -1,0 +1,84 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Enter code</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <!--enter-code-->
+    <div class="enter-code">
+
+        <!--enter-code__text-->
+        <p class="enter-code__text">
+            Verification code was sent to your number <span>{{ curData.value }}</span>.
+            Please enter it to the field below.
+        </p>
+        <!--/enter-code__text-->
+
+        <!--enter-code__form-->
+        <form class="enter-code__form main-form"
+              [formGroup]="codeForm"
+              (ngSubmit)="sendToVerify()">
+
+            <fieldset>
+
+                <div class="main-form__pin">
+
+                    <ion-input name="code"
+                               type="tel"
+                               (ionFocus)="codeIsFocus = true"
+                               (ionBlur)="codeIsFocus = false"
+                               (keyup)="checkMaxLength(6, codeForm.controls['code'].value)"
+                               [formControl]="codeForm.controls['code']"></ion-input>
+
+                    <div class="main-form__pin-wrap">
+                        <div [class.focus]="!checkCode(0) && codeIsFocus">{{ checkCode(0) }}</div>
+                        <div [class.focus]="!checkCode(1) && codeIsFocus">{{ checkCode(1) }}</div>
+                        <div [class.focus]="!checkCode(2) && codeIsFocus">{{ checkCode(2) }}</div>
+                        <div [class.focus]="!checkCode(3) && codeIsFocus">{{ checkCode(3) }}</div>
+                        <div [class.focus]="!checkCode(4) && codeIsFocus">{{ checkCode(4) }}</div>
+                        <div [class.focus]="codeIsFocus">{{ checkCode(5) }}</div>
+                    </div>
+
+                    <div *ngIf="validatorService.isErrored(codeForm.controls['code'])"
+                         [@SlideIn]
+                         class="main-form__validator-error">
+                        Wrong code was entered
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+            <button ion-button block
+                    type="button"
+                    *ngIf="isNewCode"
+                    [class.spinner]="isLoad"
+                    (click)="getNewCode()">
+                request new verification code
+            </button>
+
+            <div class="loading-info" *ngIf="!isNewCode">
+
+                <div class="loading-info__loader">
+                    <div class="loader"></div>
+                </div>
+
+                <div class="loading-info__content">
+                    <p>New confirmation code could be requested in {{ duration }} sec.</p>
+                </div>
+
+            </div>
+
+        </form>
+        <!--/enter-code__form-->
+
+    </div>
+    <!--/enter-code-->
+
+</ion-content>

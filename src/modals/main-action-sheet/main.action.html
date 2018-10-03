@@ -1,0 +1,73 @@
+
+<div class="full-page main-action" (click)="closeModal()">
+
+    <!--main-action__sheet-wrap-->
+    <div class="main-action__sheet-wrap">
+
+        <!--main-action__sheet-->
+        <div class="main-action__sheet" (click)="$event.stopPropagation()">
+            <h2 class="main-action__sheet-title">Currencies options</h2>
+            <ul (click)="closeModal()">
+                <!--main-action__sheet-item-->
+                <li class="main-action__sheet-item">
+
+                    <!--main-action__sheet-icon-->
+                    <div class="main-action__sheet-icon">
+                        <img width="48" height="48" src="../assets/icon/icon-send.svg" alt="">
+                    </div>
+                    <!--/main-action__sheet-icon-->
+
+                    <strong>Send</strong>
+                    <span>BTC to someone’s wallet</span>
+                </li>
+                <!--/main-action__sheet-item-->
+
+                <!--main-action__sheet-item-->
+                <li class="main-action__sheet-item" (click)="navCtrl.push(buyCoinsPage)">
+
+                    <!--main-action__sheet-icon-->
+                    <div class="main-action__sheet-icon">
+                        <img width="48" height="48" src="../assets/icon/icon-buy.svg" alt="">
+                    </div>
+                    <!--/main-action__sheet-icon-->
+
+                    <strong>Buy</strong>
+                    <span>Crypto for traditional money</span>
+                </li>
+                <!--/main-action__sheet-item-->
+
+                <!--main-action__sheet-item-->
+                <li class="main-action__sheet-item">
+
+                    <!--main-action__sheet-icon-->
+                    <div class="main-action__sheet-icon">
+                        <img width="48" height="48" src="../assets/icon/icon-sell.svg" alt="">
+                    </div>
+                    <!--/main-action__sheet-icon-->
+
+                    <strong>Sell</strong>
+                    <span>Your coins for traditional money</span>
+                </li>
+                <!--/main-action__sheet-item-->
+
+                <!--main-action__sheet-item-->
+                <li class="main-action__sheet-item" (click)="openModal(exchangeCoinsModal)">
+
+                    <!--main-action__sheet-icon-->
+                    <div class="main-action__sheet-icon">
+                        <img width="48" height="48" src="../assets/icon/icon-exchange.svg" alt="">
+                    </div>
+                    <!--/main-action__sheet-icon-->
+
+                    <strong>Exchange</strong>
+                    <span>Crypto to Crypto</span>
+                </li>
+                <!--/main-action__sheet-item-->
+            </ul>
+        </div>
+        <!--/main-action__sheet-->
+
+    </div>
+    <!--/main-action__sheet-wrap-->
+
+</div>

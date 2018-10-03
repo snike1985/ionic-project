@@ -1,0 +1,76 @@
+<div class="full-page">
+    <ion-header>
+
+        <ion-navbar>
+            <ion-title>Registration</ion-title>
+        </ion-navbar>
+
+    </ion-header>
+
+    <ion-content scroll="true" padding>
+
+        <!--content-justify-->
+        <form class="main-form content-flexed-col"
+              [formGroup]="registrationForm"
+              (ngSubmit)="submitRegistrationForm()">
+
+
+            <fieldset>
+                <ion-label stacked>Email</ion-label>
+
+                <div>
+                    <ion-input type="email"
+                               name="email"
+                               jbInputOnFocus
+                               [formControl]="registrationForm.controls['email']"></ion-input>
+                </div>
+
+                <div *ngIf="validatorService.isErrored(registrationForm.controls['email'])"
+                     [@SlideIn]
+                     class="main-form__validator-error">
+                    Please enter valid email.
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+                <ion-label stacked>Password</ion-label>
+
+                <jb-password [control]="registrationForm.controls['password']"
+                             [(isLeast)]="isLeast"></jb-password>
+
+            </fieldset>
+
+            <fieldset>
+                <ion-label stacked>Set your 6-digit PIN code</ion-label>
+
+                <jb-pin-code [control]="registrationForm.controls['pin']"></jb-pin-code>
+            </fieldset>
+
+            <div class="content-flexed-col__bottomed">
+                <!--privacy-->
+                <div class="privacy">
+
+                    <p class="privacy__text">
+                        I agree to <a href="#">Jubiter.com Terms & Conditions</a>, <a href="#">Privacy Policy</a> and to
+                        receiving emails, news and notifications.
+                    </p>
+
+                    <ion-toggle checked="isConfirm"
+                                (ionChange)="isConfirm=!isConfirm"
+                                color="secondary"></ion-toggle>
+                </div>
+                <!--/privacy-->
+
+                <button ion-button block
+                        [class.spinner]="isLoad"
+                        [disabled]="!registrationForm.valid || !isConfirm || !isLeast">
+                    Create Account
+                </button>
+            </div>
+
+        </form>
+        <!--/content-justify-->
+
+    </ion-content>
+</div>

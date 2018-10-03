@@ -1,0 +1,64 @@
+
+.popup-streched-content .scroll-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.coin-buy {
+    //margin-bottom: 8px;
+    padding: 16px 0;
+    background-color: color($colors, white);
+    //box-shadow: 0 6px 12px 0 rgba(26, 55, 79, 0.08);
+    &__controls {
+
+        .scroll-controls {
+            padding: 0 0 16px;
+
+            &__item {
+                margin-left: 24px;
+                padding: 0 0 3px;
+                font-size: 20px;
+                font-weight: 500;
+                font-family: $rubik-font;
+                line-height: 1.1;
+                letter-spacing: -0.6px;
+
+                &:first-child {
+                    margin-left: 16px;
+                }
+
+                &:last-child {
+                    margin-right: 16px;
+                }
+            }
+        }
+    }
+
+    &__content {
+        padding: 0 16px;
+
+        .use-card-info {
+            margin-bottom: 24px;
+        }
+    }
+
+    &__currency {
+
+        .scroll-controls {
+            padding: 0 0 16px;
+
+            &__item {
+                margin-left: 24px;
+                text-transform: uppercase;
+
+                &:first-child {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    &__recalculate {
+        margin-bottom: 16px;
+    }
+}

@@ -1,0 +1,13 @@
+<div class="scroll-iconed-controls">
+    <div class="scroll-iconed-controls__item {{ item.name }}"
+         *ngFor="let item of items; let index = index"
+         [class.active]="index === activeTab"
+         (touchmove)="touchMove($event)"
+         (touchstart)="touchstart($event)" (touchend)="touchend($event)"
+         (click)="clickItem($event, index)">
+        {{ item.title }}
+        <div class="scroll-iconed-controls__item_subtitle"
+             *ngIf="item?.subtitle">{{ item?.subtitle }}
+        </div>
+    </div>
+</div>

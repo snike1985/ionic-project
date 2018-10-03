@@ -1,0 +1,84 @@
+<div class="coin-buy">
+    <div class="coin-buy__controls">
+        <jb-scroll-controls [items]="buyCoins"></jb-scroll-controls>
+    </div>
+
+    <div class="coin-buy__content">
+        <div class="use-card-info">
+            <div class="use-card-info__text">
+                <p>Just use your credit card.</p>
+                <p>No deposit needed.</p>
+            </div>
+            <div class="use-card-info__images">
+                <img src="../../assets/imgs/visa-on-white.svg" alt="">
+                <img src="../../assets/imgs/master-card-on-white.svg" alt="">
+            </div>
+        </div>
+        <div class="coin-buy__currency">
+            <div class="scroll-controls">
+                <jb-scroll-controls [items]="currencies"></jb-scroll-controls>
+            </div>
+        </div>
+        <div class="coin-buy__recalculate">
+            <div class="loading-info">
+                <div class="loading-info__loader">
+                    <div class="loader"></div>
+                </div>
+                <div class="loading-info__content">
+                    <p>The price will be recalculated in 67 sec</p>
+                    <a href="#">How is the price calculated?</a>
+                </div>
+            </div>
+        </div>
+        <div class="quick-buy">
+            <div class="quick-buy__list">
+                <div class="quick-buy__item" *ngFor="let item of quickBuy" (click)="openBuyModal(item.price)">
+                    <div class="quick-buy__item-layout">
+                        <div>{{ item.value }}</div>
+                        <div>{{ item.name }}</div>
+                        <div class="quick-buy__item-price">{{ item.price }} {{ item.currency }}</div>
+                        <div class="quick-buy__btn">BUY</div>
+                    </div>
+                </div>
+            </div>
+            <form class="main-form quick-buy__custom">
+                <div class="quick-buy__title">Buy Custom Amount</div>
+                <p class="quick-buy__paragraph">You can buy from 200 USD</p>
+
+                <fieldset>
+
+                    <div class="quick-buy__area">
+
+                        <div class="quick-buy__area-col">
+
+                            <ion-label stacked>Spend, USD</ion-label>
+
+                            <div>
+                                <ion-input type="tel"
+                                           name="spend"
+                                           jbInputOnFocus></ion-input>
+                            </div>
+
+                        </div>
+
+                        <div class="quick-buy__area-col">
+
+                            <ion-label stacked>Receive, Bitcoins</ion-label>
+
+                            <div>
+                                <ion-input type="tel"
+                                           name="receive"
+                                           jbInputOnFocus></ion-input>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </fieldset>
+
+                <div class="quick-buy__btn">BUY</div>
+            </form>
+        </div>
+    </div>
+</div>

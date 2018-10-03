@@ -1,0 +1,48 @@
+.details {
+
+    > div:last-child {
+        margin-bottom: 0;
+    }
+    &__title {
+        font-family: $roboto-font;
+        font-size: 16px;
+        font-weight: 500;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.25;
+        letter-spacing: -0.5px;
+        color: color($colors, dark);
+    }
+    &__list {
+        margin-bottom: 16px;
+    }
+    &__item {
+        display: flex;
+        align-items: center;
+        padding: 7px 0 8px;
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.43;
+        color: color($colors, dark);
+        border-bottom: solid 2px rgba(0, 0, 0, 0.08);
+
+        &:last-child {
+            border-bottom: none;
+        }
+        dt {
+            flex: 0 0 50%;
+            font-weight: bold;
+        }
+        dd {
+            margin: 0;
+
+            &.alert {
+                font-weight: 700;
+                color: #eb001b;
+            }
+        }
+    }
+    &__btns {
+        margin-bottom: 24px;
+    }
+}

@@ -1,0 +1,34 @@
+.stars {
+    display: flex;
+    justify-content: space-between;
+
+    &__item {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        background: url(../../assets/imgs/star.svg) no-repeat;
+        background-size: contain;
+        background-position: center;
+        transition: transform $transition-duration ease-in-out;
+
+        &:after {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(../../assets/imgs/star-red.svg) no-repeat;
+            background-size: contain;
+            background-position: center;
+            transition: opacity $transition-duration ease-in-out;
+            content: '';
+        }
+        &.active:after {
+            opacity: 1;
+        }
+        &.current {
+            transform: scale(1.15);
+        }
+    }
+}

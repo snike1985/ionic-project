@@ -1,0 +1,58 @@
+.upload-images {
+    padding-bottom: 24px;
+
+    &__list {
+        margin-bottom: 16px;
+    }
+    &__item {
+        position: relative;
+        min-height: 98px;
+        padding: $main-padding;
+        padding-left: 95px;
+        margin-bottom: 24px;
+        background: color($colors, main-bg-color);
+
+        h4 {
+            margin-top: 0;
+            margin-bottom: 4px;
+            font-size: 12px;
+            font-weight: normal;
+            line-height: 1.33;
+            color: #2b2b2c;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    &__item-pic {
+        position: absolute;
+        top: $main-padding;
+        left: $main-padding;
+        width: 64px;
+        height: 64px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: #fff;
+    }
+    &__item-error {
+        max-width: 110px;
+        font-size: 12px;
+        line-height: 1.33;
+        color: color($colors, danger-text);
+    }
+    &__item-close {
+        position: absolute;
+        bottom: $main-padding;
+        right: $main-padding;
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        border: 0;
+        background-color: transparent;
+        background-image: url("../../assets/icon/icon-close-dark.svg");
+        background-position: center;
+        background-size: contain;
+    }
+}

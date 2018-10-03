@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#098CE4" d="M0 3h24v18H0z"/>
+        <circle cx="9" cy="12" r="5" fill="#EB001B"/>
+        <circle cx="15" cy="12" r="5" fill="#EB001B" style="mix-blend-mode:multiply"/>
+    </g>
+</svg>

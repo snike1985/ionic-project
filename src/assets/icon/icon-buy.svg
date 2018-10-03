@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>icons/icon-buy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="icons/icon-buy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-send" transform="translate(32.000000, 32.000000) rotate(-270.000000) translate(-32.000000, -32.000000) translate(11.000000, 8.000000)">
+            <path d="M0,24 C0,14.532 7.67657143,6.85714286 17.1428571,6.85714286 C26.6108571,6.85714286 34.2857143,14.532 34.2857143,24 C34.2857143,33.468 26.6108571,41.1428571 17.1428571,41.1428571 C7.67657143,41.1428571 0,33.468 0,24 Z" id="Combined-Shape" fill="#EB001B" style="mix-blend-mode: multiply;"></path>
+            <path d="M41.1428571,7.10542736e-15 L41.1428571,48 C27.8900571,48 17.1428571,37.2552 17.1428571,24 C17.1428571,10.7448 27.8900571,0 41.1428571,0 Z" id="Combined-Shape" fill="#098CE4" style="mix-blend-mode: multiply;" transform="translate(29.142857, 24.000000) rotate(-180.000000) translate(-29.142857, -24.000000) "></path>
+            <g id="Group-8" transform="translate(16.428571, 24.071429) rotate(-180.000000) translate(-16.428571, -24.071429) translate(6.428571, 16.571429)" fill="#FFFFFF">
+                <path d="M7.25287476,9.28571429 L10.3260568,12.3588963 L7.90169068,14.7832624 L0.628592355,7.5101641 L0.68996146,7.44879499 L0.628592355,7.38742589 L7.90169068,0.114327567 L10.3260568,2.53869367 L7.0076076,5.85714286 L19.5714286,5.85714286 L19.5714286,9.28571429 L7.25287476,9.28571429 Z" id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,90 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Contact Us</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <!--contact-us-->
+    <form class="contact-us main-form"
+         [formGroup]="contactUsForm">
+
+        <fieldset>
+
+            <ion-textarea name="message"
+                          placeholder="Share your feelings with us. What is good? What could be better?"
+                          jbInputOnFocus
+                          [formControl]="contactUsForm.controls['message']"></ion-textarea>
+        </fieldset>
+
+    </form>
+    <!--/contact-us-->
+
+    <ion-footer>
+
+        <div class="footer__wrap">
+            <button ion-button block
+                    [disabled]="!contactUsForm.valid"
+                    [class.spinner]="isLoad"
+                    (click)="submitForm()">
+                Send message
+            </button>
+        </div>
+
+    </ion-footer>
+
+</ion-content>
+
+<!--success-msg-->
+<div class="success-msg full-page" *ngIf="isSend" [@VisibilityChanged]>
+
+    <ion-content>
+
+        <!--success-msg__centered-->
+        <div class="success-msg__centered">
+
+            <!--success-msg__icon-->
+            <div class="success-msg__icon">
+                <img width="128" height="128" src="../assets/icon/icon-bubble-on-white.svg" alt="">
+            </div>
+            <!--/success-msg__icon-->
+
+            <!--success-msg__title-->
+            <h2 class="success-msg__title">
+                Thank you for your<br/>
+                feedback
+            </h2>
+            <!--/success-msg__title-->
+
+            <!--success-msg__text-->
+            <p class="success-msg__text">
+                We’ll get in touch with you shortly
+            </p>
+            <!--/success-msg__text-->
+
+        </div>
+        <!--/success-msg__centered-->
+
+    </ion-content>
+
+    <ion-footer>
+
+        <div class="footer__wrap">
+
+            <button ion-button block
+                    (click)="toPrevPage()"
+                    type="button">
+                Got it
+            </button>
+
+        </div>
+
+    </ion-footer>
+
+</div>
+<!--/success-msg-->

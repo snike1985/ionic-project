@@ -1,0 +1,62 @@
+
+.rate-us {
+    min-height: 100%;
+    padding: 40px 0;
+    background: url(../../assets/imgs/backs/rate-us-bg.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    .close-btn {
+        position: fixed;
+        top: 16px;
+        left: 16px;
+        width: 24px;
+        height: 24px;
+        border: none;
+        padding: 0;
+        background-color: transparent;
+        background-image: url(../../assets/icon/icon-close-white.svg);
+        background-size: cover;
+        background-position: center;
+    }
+    &__image {
+        text-align: center;
+
+        img {
+            display: inline-block;
+            margin-bottom: 0;
+        }
+    }
+    &__title {
+        margin-bottom: 24px;
+        font-family: $rubik-font;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 1.33;
+        letter-spacing: -1px;
+        text-align: center;
+        color: #fff;
+    }
+    &__text {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.25;
+        text-align: center;
+        color: #fff;
+    }
+    &__stars {
+        margin-bottom: 33px;
+    }
+    &__feedback {
+
+    }
+    &__feedback-form {
+
+        fieldset {
+            margin-bottom: 8px;
+        }
+        textarea {
+            height: 192px;
+        }
+    }
+}

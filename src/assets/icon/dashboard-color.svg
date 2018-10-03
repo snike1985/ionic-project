@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+    <g fill="none" fill-rule="nonzero" transform="translate(8 14)">
+        <rect width="20" height="20" x="6" fill="#2682EE" rx="2"/>
+        <path fill="#EB001B" d="M11.238 9.796l-8.066 6.393c-.66.523-1.613.44-2.172-.189a1.43 1.43 0 0 1 .171-2.063l9.591-7.733 9.942 3.97 8.116-7.236A1.588 1.588 0 0 1 31 3a1.429 1.429 0 0 1-.05 2.068l-9.654 8.757-10.058-4.03z" style="mix-blend-mode:multiply"/>
+    </g>
+</svg>

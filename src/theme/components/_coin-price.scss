@@ -1,0 +1,56 @@
+.coin-price {
+    margin-bottom: 8px;
+    padding: 16px 0;
+    background-color: color($colors, white);
+    box-shadow: 0 6px 12px 0 rgba(26, 55, 79, 0.08);
+
+    &__controls {
+
+        .scroll-controls {
+            padding: 0 0 16px;
+
+            &__item {
+                margin-left: 24px;
+                padding: 0 0 3px;
+                font-size: 20px;
+                font-weight: 500;
+                font-family: $rubik-font;
+                line-height: 1.1;
+                letter-spacing: -0.6px;
+
+                &:first-child {
+                    margin-left: 16px;
+                }
+
+                &:last-child {
+                    margin-right: 16px;
+                }
+            }
+        }
+    }
+
+    &__content {
+        padding: 0 16px;
+
+        .scroll-controls {
+            padding: 0 0 16px;
+        }
+    }
+
+    &__head {
+
+    }
+
+    &__chart {
+        margin-bottom: 24px;
+    }
+
+    &__btns {
+        display: flex;
+        justify-content: space-between;
+
+        .custom-btn {
+            width: calc(50% - 8px);
+        }
+    }
+}

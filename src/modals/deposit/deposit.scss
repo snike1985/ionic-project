@@ -1,0 +1,47 @@
+
+
+.deposits {
+
+    &__wrap {
+        padding-top: 24px;
+    }
+    &__card {
+        padding: 22px 0 0;
+        margin-bottom: 22px;
+        border-top: solid 1px rgba(0, 0, 0, 0.1);
+        border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+    }
+    &__card-head {
+        margin-bottom: 20px;
+        display: flex;
+    }
+    &__card-head-col {
+        flex: 0 0 50%;
+
+        h4 {
+            margin: 0;
+            font-family: $rubik-font;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.6px;
+            color: color($colors, dark);
+            white-space: pre-line;
+        }
+    }
+    &__card-cards {
+
+        p {
+            margin: 0;
+            font-size: 12px;
+            line-height: 1.33;
+            color: color($colors, dark);
+        }
+        img {
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 8px;
+            margin-left: 0;
+        }
+    }
+}

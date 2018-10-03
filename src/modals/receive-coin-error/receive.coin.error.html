@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-toolbar>
+
+    <ion-buttons start>
+      <button ion-button
+              type="button"
+              color="primary"
+              icon-only
+              (click)="closeModal()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>
+
+        <span *ngIf="curType !== 'referrals'">Receive {{ curType }}</span>
+        <span *ngIf="curType === 'referrals'">Share referral</span>
+
+    </ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <div class="receive-coin">
+
+    <div class="receive-coin__alert">
+      <h2 class="receive-coin__title">Oops, something went wrong!</h2>
+      <p>You can try late.</p>
+    </div>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+
+  <div class="footer__wrap">
+
+    <button ion-button block
+            type="submit" (click)="closeModal()">
+      Close
+    </button>
+
+  </div>
+
+</ion-footer>

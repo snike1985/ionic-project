@@ -1,0 +1,145 @@
+.quick-buy {
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    &__paragraph{
+        padding-bottom: 22px;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: calc(50% - 4px);
+        height: calc((50vw - 20px) * 8 / 7);
+        margin-bottom: 8px;
+        padding: 16px;
+        background-color: #f3f5f9;
+
+        &-layout {
+            width: 100%;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: $rubik-font;
+            line-height: 1.43;
+            letter-spacing: -0.5px;
+            color: #2c2b2b;
+        }
+
+        &-price {
+            display: block;
+            padding: 8px 0 16px;
+            font-size: 24px;
+            font-weight: 500;
+            font-family: $rubik-font;
+            line-height: 1;
+            letter-spacing: -1.6px;
+            text-transform: uppercase;
+        }
+    }
+
+    &__btn {
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        font-weight: 500;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: -0.6px;
+        color: color($colors, primary);
+
+        &:after {
+            display: block;
+            width: 16px;
+            height: 16px;
+            margin-left: 4px;
+            background: {
+                image: url("../../assets/icon/icon-arrow-cta.svg");
+                repeat: no-repeat;
+                position: center;
+                size: contain;
+            }
+        ;
+            content: '';
+        }
+    }
+
+    &__custom {
+        padding: 24px 16px;
+        background-color: #f3f5f9;
+    }
+
+    &__area {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 24px;
+
+        &:after {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 24px;
+            height: 40px;
+            transform: translate(-50%, 0);
+            background: {
+                image: url("../../assets/imgs/icon-arrow-right.svg");
+                repeat: no-repeat;
+                position: center;
+                size: contain;
+            }
+        ;
+            pointer-events: none;
+            content: '';
+        }
+
+        &-col {
+            width: calc(50% - 12px);
+            margin-bottom: 0 !important;
+        }
+    }
+
+    &__field {
+        height: 40px;
+        width: 100%;
+        padding: 8px;
+        background-color: color($colors, white);
+        border: solid 1px color($colors, border-color);
+        font-size: 16px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+        color: color($colors, dark);
+    }
+
+    &__label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 12px;
+        font-weight: bold;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: color($colors, dark);
+    }
+
+    &__title {
+        display: block;
+        margin-bottom: 12px;
+        font-size: 20px;
+        font-weight: 500;
+        font-family: $rubik-font;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.1;
+        letter-spacing: -0.6px;
+        color: color($colors, dark);
+    }
+}

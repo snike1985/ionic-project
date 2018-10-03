@@ -1,0 +1,44 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>
+            Receive {{ this.curData['currency'] }}
+        </ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div class="receive-coin">
+
+        <div class="receive-coin__qr" *ngIf="qrData">
+            <ngx-qrcode
+                [qrc-value]="qrData"
+                qrc-class="qr-code">
+            </ngx-qrcode>
+        </div>
+
+        <div class="receive-coin__address">
+            <h2 class="receive-coin__title">{{ this.curData['type'] }} Wallet Address</h2>
+            <div class="receive-coin__address-field" (press)="copyToClipboard(qrData)">{{ qrData }}</div>
+            <div class="main-link main-link_righted">
+                <span (click)="copyToClipboard(qrData)" href="">Copy address</span>
+            </div>
+        </div>
+    </div>
+</ion-content>
+
+<ion-footer>
+
+    <div class="footer__wrap">
+
+        <button ion-button block (click)="shareWalletAddress()">
+            share address
+        </button>
+        <div class="receive-coin__copied" *ngIf="wasCopied" [@SlideIn]>BTC Wallet Address Copied</div>
+
+    </div>
+
+
+</ion-footer>

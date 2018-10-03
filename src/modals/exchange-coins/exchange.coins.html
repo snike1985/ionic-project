@@ -1,0 +1,256 @@
+<form class="main-modal main-form full-page"
+      [formGroup]="exchangeCoinsForm"
+      (ngSubmit)="submitExchangeCoinsForm()">
+
+    <ion-header>
+
+        <ion-toolbar>
+
+            <ion-buttons start>
+                <button ion-button
+                        type="button"
+                        color="primary"
+                        icon-only
+                        (click)="closeModal()">
+                    <ion-icon name="md-close"></ion-icon>
+                </button>
+            </ion-buttons>
+
+            <ion-title>
+                Exchange coins
+            </ion-title>
+
+        </ion-toolbar>
+
+    </ion-header>
+
+    <ion-content padding>
+
+        <fieldset>
+
+            <ion-item>
+
+                <ion-label stacked>Pay from wallet</ion-label>
+
+                <ion-select [formControl]="exchangeCoinsForm.controls['payWallet']"
+                            interface="action-sheet">
+                    <ion-option *ngFor="let item of currencyList"
+                                [value]="item.value">{{ item.name }}
+                    </ion-option>
+                </ion-select>
+
+            </ion-item>
+
+        </fieldset>
+
+        <fieldset>
+
+            <ion-label stacked>Amount</ion-label>
+
+            <div class="main-form__with-text">
+
+                <span>{{ exchangeCoinsForm.controls['payWallet'].value }}</span>
+
+                <ion-input name="amount"
+                           type="tel"
+                           jbInputOnFocus
+                           [formControl]="exchangeCoinsForm.controls['payAmount']"></ion-input>
+            </div>
+
+            <div *ngIf="validatorService.isErrored(exchangeCoinsForm.controls['payAmount'])"
+                 [@SlideIn]
+                 class="main-form__validator-error">
+                Please enter amount.
+            </div>
+
+            <div class="main-link main-link_lefted">
+                <span (click)="sellMaxCoins()">
+                    Exchange all {{ maxCoins }}
+                    {{ exchangeCoinsForm.controls['payWallet'].value }}
+                </span>
+            </div>
+
+        </fieldset>
+
+        <fieldset>
+
+            <ion-item>
+
+                <ion-label stacked>Receive to wallet</ion-label>
+
+                <ion-select [formControl]="exchangeCoinsForm.controls['receiveWallet']"
+                            interface="action-sheet">
+                    <ion-option *ngFor="let item of currencyList"
+                                [value]="item.value">{{ item.name }}
+                    </ion-option>
+                </ion-select>
+
+            </ion-item>
+
+        </fieldset>
+
+        <fieldset>
+
+            <ion-label stacked>Amount</ion-label>
+
+            <div class="main-form__with-text">
+
+                <span>{{ exchangeCoinsForm.controls['receiveWallet'].value }}</span>
+
+                <ion-input name="amount"
+                           type="tel"
+                           jbInputOnFocus
+                           [formControl]="exchangeCoinsForm.controls['receiveAmount']"></ion-input>
+            </div>
+
+            <div *ngIf="validatorService.isErrored(exchangeCoinsForm.controls['receiveAmount'])"
+                 [@SlideIn]
+                 class="main-form__validator-error">
+                Please enter amount.
+            </div>
+
+        </fieldset>
+
+        <!--change ammount-->
+        <div class="pay-card-change-amm">
+
+            <div class="pay-card-change-amm__title">
+                <span>Summary</span>
+            </div>
+
+            <dl class="details-list">
+
+                <dt>Pay:</dt>
+                <dd>{{ exchangeCoinsForm.controls['payAmount'].value }} {{ exchangeCoinsForm.controls['payWallet'].value }}</dd>
+
+                <dt>Receive:</dt>
+                <dd>{{ exchangeCoinsForm.controls['receiveAmount'].value }} {{ exchangeCoinsForm.controls['receiveWallet'].value }}</dd>
+
+
+
+
+
+                <dt>Exchange rate:</dt>
+                <dd>
+                    1.0000 {{ exchangeCoinsForm.controls['payWallet'].value }}
+                    /
+                    345.0045 {{ exchangeCoinsForm.controls['receiveWallet'].value }}
+                </dd>
+
+                <dt>Fee:</dt>
+                <dd>2.50 USD</dd>
+
+                <dt>Total to pay:</dt>
+                <dd>0.0588 {{ exchangeCoinsForm.controls['payWallet'].value }}</dd>
+
+            </dl>
+
+            <div class="coin-buy__recalculate">
+                <div class="loading-info">
+                    <div class="loading-info__loader">
+                        <div class="loader"></div>
+                    </div>
+                    <div class="loading-info__content">
+                        <p>The price will be recalculated in 67 sec</p>
+                        <a href="#">How is the price calculated?</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--/change ammount-->
+
+        <button ion-button block
+                type="submit"
+                [class.spinner]="isLoad"
+                [disabled]="!exchangeCoinsForm.valid">
+            exchange coins
+        </button>
+
+    </ion-content>
+
+
+
+    <!--success-msg-->
+    <div class="success-msg full-page" *ngIf="isSuccess" [@VisibilityChanged]>
+
+        <ion-content padding>
+
+            <!--success-msg__centered-->
+            <div class="success-msg__centered">
+
+                <!--success-msg__details-->
+                <div class="success-msg__details">
+
+                    <h3>
+                        {{ exchangeCoinsForm.controls['payWallet'].value }} has been changed to
+                        {{ exchangeCoinsForm.controls['receiveWallet'].value }} successfully
+                    </h3>
+
+                    <!--success-msg__details-total-->
+                    <div class="success-msg__details-total">
+
+                        <img width="32" height="32" src="../assets/icon/icon-confirmed-small.svg" alt="">
+
+                        <p>
+                            <span>{{ exchangeCoinsForm.controls['payAmount'].value }} {{ exchangeCoinsForm.controls['payWallet'].value }} to</span>
+                            {{ exchangeCoinsForm.controls['receiveAmount'].value }} {{ exchangeCoinsForm.controls['receiveWallet'].value }}
+                        </p>
+
+                    </div>
+                    <!--/success-msg__details-total-->
+
+                    <!--success-msg__details-list-->
+                    <div class="success-msg__details-list">
+
+                        <dl>
+                            <dt>Exchange rate:</dt>
+                            <dd>
+                                1.0000 {{ exchangeCoinsForm.controls['payWallet'].value }}
+                                /
+                                345.0045 {{ exchangeCoinsForm.controls['receiveWallet'].value }}
+                            </dd>
+                        </dl>
+
+                        <dl>
+                            <dt>Fee:</dt>
+                            <dd>2.50 USD</dd>
+                        </dl>
+
+                        <dl>
+                            <dt>Total to pay:</dt>
+                            <dd>0.0588 {{ exchangeCoinsForm.controls['payWallet'].value }}</dd>
+                        </dl>
+
+                    </div>
+                    <!--/success-msg__details-list-->
+
+                </div>
+                <!--/success-msg__details-->
+
+            </div>
+            <!--/success-msg__centered-->
+
+        </ion-content>
+
+        <ion-footer>
+
+            <div class="footer__wrap">
+
+                <button ion-button block
+                        (click)="closeModal()"
+                        type="button">
+                    Got it
+                </button>
+
+            </div>
+
+        </ion-footer>
+
+    </div>
+    <!--/success-msg-->
+
+</form>
+
+
+

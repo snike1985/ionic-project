@@ -1,0 +1,67 @@
+
+
+.receive-coin {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  color: #2b2b2c;
+
+  p {
+    color: inherit;
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: 16px;
+    font-family: Rubik;
+    font-size: 20px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.1;
+    letter-spacing: -0.6px;
+    color: inherit;
+  }
+
+  &__alert {
+    padding: 24px 16px;
+    margin-bottom: 24px;
+    background-color: #eb001b;
+    color: #ffffff;
+  }
+
+  &__qr {
+    display: block;
+    padding: 33px;
+    margin-bottom: 19px;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &__address {
+    display: block;
+    padding: 16px;
+    background-color: #f3f5f9;
+
+    &-field {
+      display: block;
+      padding: 8px;
+      font-family: Roboto;
+      font-size: 11px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.82;
+      letter-spacing: normal;
+      color: #2b2b2c;
+      background-color: #ffffff;
+    }
+  }
+}

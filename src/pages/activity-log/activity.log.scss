@@ -1,0 +1,58 @@
+jb-page-activity-log {
+
+}
+.activity-log {
+    padding-top: 15px;
+
+    &__item {
+        position: relative;
+        padding: 28px 0 31px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+        dl {
+            display: flex;
+            margin-bottom: 12px;
+            font-size: 14px;
+            line-height: 1.43;
+            color: #2b2b2c;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+        dt {
+            flex: 0 0 105px;
+            margin-right: 25px;
+            font-weight: 500;
+        }
+        dd {
+
+        }
+        img {
+            display: inline-block;
+            vertical-align: middle;
+            width: 12px;
+            height: 8px;
+            margin-right: 3px;
+            margin-bottom: 0;
+        }
+    }
+    &__item-title {
+        font-family: $rubik-font;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 1.1;
+        letter-spacing: -0.6px;
+    }
+    &__item-date {
+        position: absolute;
+        display: inline-block;
+        top: -7px;
+        left: 50%;
+        padding: 0 16px;
+        background: #fff;
+        font-size: 14px;
+        color: rgba(43, 43, 44, .5);
+        transform: translateX(-50%);
+    }
+}

@@ -1,0 +1,26 @@
+
+<div class="main-form__pin">
+
+    <ion-input name="pin"
+               type="tel"
+               (ionFocus)="pinIsFocus = true"
+               (ionBlur)="pinIsFocus = false"
+               (keyup)="checkMaxLength(6, control.value)"
+               [formControl]="control"></ion-input>
+
+    <div class="main-form__pin-wrap">
+        <div [class.active]="checkPin(0)" [class.focus]="!checkPin(0) && pinIsFocus"></div>
+        <div [class.active]="checkPin(1)" [class.focus]="!checkPin(1) && pinIsFocus"></div>
+        <div [class.active]="checkPin(2)" [class.focus]="!checkPin(2) && pinIsFocus"></div>
+        <div [class.active]="checkPin(3)" [class.focus]="!checkPin(3) && pinIsFocus"></div>
+        <div [class.active]="checkPin(4)" [class.focus]="!checkPin(4) && pinIsFocus"></div>
+        <div [class.active]="checkPin(5)" [class.focus]="pinIsFocus"></div>
+    </div>
+
+    <div *ngIf="validatorService.isErrored(control)"
+         [@SlideIn]
+         class="main-form__validator-error">
+        The Set 6-digit PIN code field is required.
+    </div>
+
+</div>

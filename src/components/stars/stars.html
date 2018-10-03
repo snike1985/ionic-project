@@ -1,0 +1,8 @@
+<div class="stars" #starsElem>
+
+    <div class="stars__item"
+         *ngFor="let star of stars; let i = index"
+         (click)="setRate(i)"
+         [class.active]="star.active"
+         [class.current]="star.current"></div>
+</div>

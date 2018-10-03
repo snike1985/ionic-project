@@ -1,0 +1,134 @@
+<form class="main-form"
+      [formGroup]="buyWithUSDtForm"
+      (ngSubmit)="submitBuyWithUSDt()">
+
+    <div class="usdt-info">
+        <h2 class="usdt-info__title">Spend:</h2>
+        <div class="usdt-info__block" padding>
+            <div class="usdt-info__block-amm">
+                {{ exchangeData.sellAmmount | number:'1.2-2' }}
+                <span class="usdt-info__block-amm-currency">{{ exchangeData.sellCurrency }}</span>
+            </div>
+            <div class="usdt-info__block-role">FROM:</div>
+            <div class="usdt-info__block-wallet-info">
+                <span>USDt Wallet</span>
+                <span class="usdt-info__block-wallet-info-balance">{{ exchangeData.sellBalance }} {{ exchangeData.sellCurrency }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="usdt-info">
+        <h2 class="usdt-info__title">Receive:</h2>
+        <div class="usdt-info__block" padding>
+            <div class="usdt-info__block-amm">
+                {{ roundedIncome }}
+                <span class="usdt-info__block-amm-currency">{{ exchangeData.buyCurrency }}</span>
+            </div>
+            <div class="usdt-info__block-role">TO:</div>
+            <div class="usdt-info__block-wallet-info">
+                <span>Bitcoin Wallet</span>
+                <span class="usdt-info__block-wallet-info-balance">{{ exchangeData.buyBalance }} {{ exchangeData.buyCurrency }}</span>
+            </div>
+        </div>
+    </div>
+
+    <!--change ammount-->
+    <div class="pay-card-change-amm">
+
+        <div class="pay-card-change-amm__title">
+            <span>Buy Bitcoins</span>
+            <div class="pay-card-change-amm__ssl">
+                SSL Secure
+            </div>
+        </div>
+
+        <div class="pay-card-change-amm__edit" *ngIf="!isInEdit">
+
+            <div class="pay-card-change-amm__edit-icon" (click)="toggleEditAmmount()"></div>
+            <div class="pay-card-change-amm__edit-in">{{ roundedIncome }} {{ exchangeData.buyCurrency }} for</div>
+            <div class="pay-card-change-amm__edit-out">{{ exchangeData.sellAmmount }} USD</div>
+
+        </div>
+
+        <div class="main-form" *ngIf="isInEdit" [@VisibilityChanged]>
+            <div class="quick-buy__area">
+
+                <div class="quick-buy__area-col">
+
+                    <ion-label stacked>Spend, {{ exchangeData.sellCurrency }}</ion-label>
+
+                    <div>
+                        <ion-input type="text"
+                                   name="spend"
+                                   [formControl]="buyWithUSDtForm.controls['spend']"
+                                   [(ngModel)]="exchangeData.sellAmmount"
+                                   jbInputOnFocus></ion-input>
+                    </div>
+
+                </div>
+
+                <div class="quick-buy__area-col">
+
+                    <ion-label stacked>Receive, {{ exchangeData.buyCurrency }}</ion-label>
+
+                    <div>
+                        <ion-input type="text"
+                                   name="receive"
+                                   [formControl]="buyWithUSDtForm.controls['receive']"
+                                   [ngModel]="roundedIncome"
+                                   readonly></ion-input>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="coin-buy__recalculate">
+            <div class="loading-info">
+                <div class="loading-info__loader">
+                    <div class="loader"></div>
+                </div>
+                <div class="loading-info__content">
+                    <p>The price will be recalculated in 67 sec</p>
+                    <a href="#">How is the price calculated?</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pay-card-change-amm__title">
+            <span>Summary</span>
+        </div>
+
+        <dl class="details-list">
+
+            <dt>Exchange rate:</dt>
+            <dd>{{ exchangeData.rate | number:'1.2-2' }} {{ exchangeData.sellCurrency }}</dd>
+
+            <dt>Processing fee:</dt>
+            <dd>{{ exchangeData.sellAmmount*exchangeData.exchangeFee | number:'1.2-2' }} {{ exchangeData.sellCurrency }}
+            </dd>
+
+            <dt>Total spend:</dt>
+            <dd>{{ exchangeData.sellAmmount | number:'1.2-2' }} {{ exchangeData.sellCurrency }}</dd>
+
+            <dt>Total receive:</dt>
+            <dd>{{ roundedIncome }} {{ exchangeData.buyCurrency }}</dd>
+
+        </dl>
+
+
+    </div>
+    <!--/change ammount-->
+
+    <p class="pay-card-paragraph">The billing descriptor you will see on your credit card statement will be Jubiter.com
+        (855) 879-9121. Operated by Jubiter Technologies OU. Registration #14439099. Address: Harju maakond, Tallin,
+        Kesklinna linnaosa, Roosikrantsi tn 2-K432, 1019, Estonia</p>
+
+    <button ion-button block
+            type="submit"
+            [class.spinner]="isLoad"
+            [disabled]="!buyWithUSDtForm.valid">
+        buy bitcoins
+    </button>
+
+</form>

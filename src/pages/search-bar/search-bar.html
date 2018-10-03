@@ -1,0 +1,79 @@
+<!--
+  Generated template for the SearchBarPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Country</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="dark-bg">
+
+    <!--searchbar-->
+    <div class="searchbar">
+
+        <div class="content-card">
+            <ion-searchbar showCancelButton
+                           cancelButtonText=""
+                           [(ngModel)]="curValue"
+                           (ionInput)="checkItems($event)"></ion-searchbar>
+        </div>
+
+        <ion-list class="searchbar__list content-card" *ngIf="curCountry['countryName']">
+
+            <ion-item no-lines no-padding nowrap
+                      class="searchbar__item searchbar__item_checked">
+
+                <i class="{{curCountry['countryName'].toLowerCase()}}"></i>
+
+                {{ curCountry['countryName'] }}
+
+            </ion-item>
+
+        </ion-list>
+
+        <ion-list class="searchbar__list content-card">
+
+            <ion-item no-lines no-padding nowrap
+                      *ngIf="curCountry['curLocation']"
+                      class="searchbar__item searchbar__item_current">
+
+                <div class="searchbar__item-title">Current location</div>
+
+                <i class="{{curCountry['curLocation'].toLowerCase()}}"></i>
+
+                {{ curCountry['curLocation'] }}
+
+            </ion-item>
+
+            <ion-item no-lines no-padding nowrap
+                      *ngIf="!countriesList.length"
+                      class="searchbar__item">
+
+                Nothing found
+
+            </ion-item>
+
+            <ion-item no-lines no-padding nowrap
+                      class="searchbar__item searchbar__item_with-margin"
+                      *ngFor="let item of countriesList"
+                      [class.searchbar__item_checked]="curCountry['countryName'] === item"
+                      (click)="selectValue(item)">
+
+                <i class={{item.toLowerCase()}}></i>
+                {{ item }}
+
+            </ion-item>
+
+        </ion-list>
+
+    </div>
+    <!--/searchbar-->
+
+</ion-content>

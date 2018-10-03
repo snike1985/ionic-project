@@ -1,0 +1,20 @@
+.progress-bar {
+    position: relative;
+    overflow: hidden;
+    width: 102px;
+    height: 4px;
+    margin-top: 24px;
+    border-radius: 4px;
+    background-color: #fff;
+
+    div {
+        position: absolute;
+        background: #0a91ec;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        -webkit-transition: width $transition-duration;
+        transition: width $transition-duration;
+    }
+}

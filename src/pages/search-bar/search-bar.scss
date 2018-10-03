@@ -1,0 +1,100 @@
+.searchbar {
+
+    &.searchbar-ios,
+    &.searchbar-md {
+        border: none;
+
+        .searchbar-search-icon {
+            top: 50%;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            margin-top: -12px;
+            background-size: 16px;
+            background-position: center;
+        }
+        .searchbar-input {
+            padding-left: 66px;
+        }
+        .button-clear {
+            overflow: hidden;
+            height: 24px !important;
+            width: 24px;
+            padding: 0 !important;
+            background-image: url(../../assets/icon/icon-close-dark.svg);
+            background-size: contain;
+        }
+        .searchbar-md-cancel,
+        .searchbar-ios-cancel{
+            display: none !important;
+            background: none !important;
+        }
+    }
+    .content-card {
+        padding: 12px 16px;
+    }
+    &__list {
+
+    }
+    &__item {
+        font-family: $roboto-font;
+        font-size: 14px;
+        line-height: 1.43;
+        color: color($colors, dark);
+
+        i {
+            display: inline-block;
+            vertical-align: middle;
+            width: 32px;
+            height: 24px;
+            margin-right: 34px;
+            background-size: contain;
+
+            &.ukraine {
+                background-image: url(../../assets/flags/4x3/ua.svg);
+            }
+            &.usa {
+                background-image: url(../../assets/flags/4x3/us.svg);
+            }
+            &.israel {
+                background-image: url(../../assets/flags/4x3/il.svg);
+            }
+        }
+        &_checked {
+            position: relative;
+            min-height: auto;
+            padding-right: 16px;
+
+            ion-label {
+                margin: 0;
+            }
+            .item-inner {
+                min-height: auto;
+            }
+            &:after {
+                @include absoluteCenterY();
+                right: 0;
+                width: 16px;
+                height: 16px;
+                background-image: url(../../assets/icon/icon-checked-small.svg);
+                background-size: contain;
+                content: '';
+            }
+        }
+        &_current {
+            margin-bottom: 30px;
+        }
+        &_with-margin {
+
+            ion-label {
+                margin: 11px 8px 11px 0;
+            }
+        }
+    }
+    &__item-title {
+        margin-bottom: 22px;
+        font-size: 12px;
+        line-height: 1.33;
+        color: color($colors, dark);
+    }
+}

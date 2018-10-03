@@ -1,0 +1,71 @@
+<div *ngIf="!curData.isPending && !curData.isVerified" [@VisibilityChanged]>
+
+    <!--note-->
+    <div class="note">
+
+        <!--note__title-->
+        <h3 class="note__title note__title_simple">
+            Upload your passport scan
+        </h3>
+        <!--/note__title-->
+
+        <p>Pls upload the piece of your ID in ordr to proceed with this payout option</p>
+
+    </div>
+    <!--/note-->
+
+    <jb-upload-document [data]="curData"></jb-upload-document>
+
+</div>
+
+<!--success-msg-->
+<div class="success-msg full-page" *ngIf="curData.isPending || curData.isVerified" [@VisibilityChanged]>
+
+    <ion-content>
+
+        <!--success-msg__centered-->
+        <div class="success-msg__centered">
+
+            <!--success-msg__icon-->
+            <div class="success-msg__icon">
+                <img *ngIf="curData.isPending" width="128" height="128" src="../assets/imgs/pending.svg" alt="">
+                <img *ngIf="curData.isVerified" width="128" height="128" src="../assets/imgs/id-verified.svg" alt="">
+
+            </div>
+            <!--/success-msg__icon-->
+
+            <!--success-msg__title-->
+            <h2 class="success-msg__title">
+                {{ curData.isPending ? 'Pending Verification ' : 'Your ID Was Verified' }}
+            </h2>
+            <!--/success-msg__title-->
+
+            <!--success-msg__text-->
+            <p class="success-msg__text" *ngIf="curData.isPending">
+                We are validating your ID, you can proceed to use the application as if your identify has been confirmed
+                for the time being. We will update you shortly.
+            </p>
+            <!--/success-msg__text-->
+
+        </div>
+        <!--/success-msg__centered-->
+
+    </ion-content>
+
+    <ion-footer>
+
+        <div class="footer__wrap">
+
+            <button ion-button block
+                    (click)="goToNextStep()"
+                    type="button">
+                proceed to payment details
+            </button>
+
+        </div>
+
+    </ion-footer>
+
+</div>
+<!--/success-msg-->
+

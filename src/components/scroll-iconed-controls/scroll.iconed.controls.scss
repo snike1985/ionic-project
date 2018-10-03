@@ -1,0 +1,67 @@
+.scroll-iconed-controls {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    transition: transform $transition-duration linear;
+    font-family: $rubik-font;
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        justify-content: center;
+        margin-left: 12px;
+        font-weight: 500;
+        line-height: 1.14;
+        letter-spacing: -0.5px;
+        color: #2c2b2b;
+        max-width: 170px;
+        min-width: 150px;
+        min-height: 56px;
+        padding: 5px 15px 5px 56px;
+        background-color: #fbfbfb;
+        box-shadow: 0 2px 2px 0 rgba(206, 206, 206, 0.5);
+        background-position: 16px 50%;
+        background-repeat: no-repeat;
+        background-size: 24px 24px;
+        &_subtitle{
+            font-size: 11px;
+            font-weight: 400;
+            padding-top: 3px;
+        }
+
+        &.card {
+            background-image: url(../../assets/icon/icon-card.svg);
+        }
+        &.pm {
+            background-image: url(../../assets/icon/icon-perfect-money.svg);
+        }
+        &.payeer {
+            background-image: url(../../assets/icon/icon-payeer.svg);
+        }
+        &.usdt {
+            background-image: url(../../assets/icon/icon-bank.svg);
+        }
+        &.bank {
+            background-image: url(../../assets/icon/icon-bank_2.svg);
+        }
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &.active {
+            background-color: #fff;
+            &:after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: -2px;
+                right: -2px;
+                bottom: -2px;
+                left: -2px;
+                border: solid 2px #0a90ea;
+            }
+        }
+    }
+}

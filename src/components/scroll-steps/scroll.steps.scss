@@ -1,0 +1,51 @@
+.scroll-steps {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    transition: transform $transition-duration linear;
+    margin: -4px 0;
+    text-transform: uppercase;
+    color: rgba(43, 43, 44, 0.5);
+    font-weight: 500;
+    font-size: 11px;
+    &__item {
+        margin-left: 24px;
+        padding: 0 0 2px;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        flex-grow: 0;
+        transition: color $transition-duration ease;
+        &:first-child {
+            margin-left: 16px;
+        }
+        &.active {
+            color: #2c2b2b;
+            .scroll-steps__nubmer {
+                background-color: #0a94f1;
+                color: #fff;
+            }
+        }
+        &.marked {
+            .scroll-steps__nubmer {
+                background-image: url(../../assets/icon/icon-checked-gray.svg);
+                background-position: 50% 50%;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+    &__nubmer {
+        flex: 0 0 24px;
+        width: 24px;
+        height: 24px;
+        margin-right: 8px;
+        border-radius: 50%;
+        background-color: #f3f5f9;
+        line-height: 25px;
+        text-align: center;
+        transition: background-color $transition-duration ease;
+    }
+    &__text {
+        flex-grow: 0;
+    }
+}

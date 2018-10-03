@@ -1,0 +1,50 @@
+<form class="main-modal main-form full-page"
+      [formGroup]="pinForm">
+
+    <ion-header>
+
+        <ion-toolbar>
+
+            <ion-buttons start>
+                <button ion-button
+                        type="button"
+                        color="primary"
+                        icon-only
+                        (click)="closeModal()">
+                    <ion-icon name="md-close"></ion-icon>
+                </button>
+            </ion-buttons>
+
+            <ion-title>
+                Enter your pin
+            </ion-title>
+
+        </ion-toolbar>
+
+    </ion-header>
+
+    <ion-content padding>
+
+        <div class="change-code">
+
+            <p class="change-code__text" *ngIf="isWrong && tryCount" [@SlideIn]>PIN Codes did not match. Try Again.</p>
+
+            <fieldset class="change-code__inner" [class.disabled]="!tryCount">
+                <jb-pin-code [control]="pinForm.controls['pin']"
+                             [isLocked]="!this.tryCount"></jb-pin-code>
+
+                <div class="main-link">
+                    <a href="#">Forgot your pin?</a>
+                </div>
+
+            </fieldset>
+
+            <div class="change-code__error" *ngIf="!tryCount">
+                You Are {{ duration }}s Away From Next Attempt
+            </div>
+
+        </div>
+
+    </ion-content>
+
+</form>

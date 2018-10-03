@@ -1,0 +1,149 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Settings</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+    <!--settings-->
+    <div class="settings dark-bg">
+
+        <div class="tabs-navigate">
+
+            <div class="container">
+
+                <div class="tabs-navigate__item"
+                     *ngFor="let tab of tabs"
+                     (click)="toggleTab(tab)"
+                     [class.active]="tab.isActive">{{ tab.name }}
+                </div>
+
+            </div>
+
+        </div>
+
+        <div [ngSwitch]="curTab">
+
+            <div *ngSwitchCase="tabs[0].name">
+
+                <div class="settings__security container">
+
+                    <!--settings__security-item-->
+                    <div class="settings__security-item" *ngIf="biometricAuthData['isFaceId']">
+
+                        <!--switcher-wrapper-->
+                        <div class="switcher">
+
+                            <!--switcher__text-->
+                            <p class="switcher__text">
+                                Enable Touch ID to Login
+                            </p>
+                            <!--/switcher__text-->
+
+                            <ion-toggle [(ngModel)]="biometricAuthData[ 'isActive' ]"
+                                        (ionChange)="toggleBiometricAuth()"
+                                        color="secondary"></ion-toggle>
+
+                        </div>
+                        <!--/switcher-wrapper-->
+
+                    </div>
+                    <!--/settings__security-item-->
+
+                    <!--settings__security-item-->
+                    <div class="settings__security-item">
+
+                        <!--switcher-->
+                        <div class="switcher">
+
+                            <!--switcher__text-->
+                            <p class="switcher__text">
+                                Two-factor Authentication
+                            </p>
+                            <!--/switcher__text-->
+
+                            <ion-toggle [(ngModel)]="isAuth"
+                                        (ionChange)="toggleTwoFactorAuth()"
+                                        color="secondary"></ion-toggle>
+
+                        </div>
+                        <!--/switcher-->
+
+                        <div class="settings__security-item-text">
+                            With Two-factor authentication your account will be protected by a 2 step log in process. Jubiter uses Google Authenticator for this process.
+                        </div>
+
+                        <div class="warning" *ngIf="!isAuth" [@SlideIn]>
+                            Strongly recommended
+                        </div>
+
+                    </div>
+                    <!--/settings__security-item-->
+
+                    <!--settings__security-item-->
+                    <div class="settings__security-item">
+
+                        <p>PIN Code</p>
+
+                        <button ion-button block outline
+                                class="black-color"
+                                (click)="openChangePinModal()">
+                            Change PIN Code
+                        </button>
+
+                    </div>
+                    <!--/settings__security-item-->
+
+                    <!--settings__security-item-->
+                    <div class="settings__security-item">
+
+                        <p>Password</p>
+
+                        <button ion-button block outline
+                                class="black-color"
+                                (click)="openChangePasswordModal()">
+                            Change Password
+                        </button>
+
+                    </div>
+                    <!--/settings__security-item-->
+
+                </div>
+
+            </div>
+
+            <div *ngSwitchCase="tabs[1].name">
+
+                <div class="container">
+
+                    <jb-notifications></jb-notifications>
+
+                    <!--add-phone-->
+                    <div class="add-phone" *ngIf="!phoneData.isVerified">
+
+                        <button ion-button block outline small
+                                class="black-color"
+                                (click)="openAddPhoneModal()">
+                            Add Phone Number
+                        </button>
+
+                        <p>
+                            Add a phone number to receive selected notifications through the SMS
+                        </p>
+
+                    </div>
+                    <!--/add-phone-->
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!--/settings-->
+
+</ion-content>

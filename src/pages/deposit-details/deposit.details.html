@@ -1,0 +1,116 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Deposit</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <!--details-->
+    <div class="details main__wrap">
+
+        <h3 class="details__title">
+            Please use the information below to make an international bank transfer
+        </h3>
+
+        <!--details__list-->
+        <div class="details__list">
+
+            <!--details__item-->
+            <dl class="details__item" *ngFor="let item of objectKeys(curData)">
+
+                <dt>{{ curData[ item ][ 'title' ] }}:</dt>
+
+                <dd [class.alert]="item === 'referenceNumber'">{{ curData[ item ][ 'value' ] }}</dd>
+
+            </dl>
+            <!--/details__item-->
+
+        </div>
+        <!--/details__list-->
+
+        <!--details__btns-->
+        <div class="details__btns">
+
+            <button ion-button block outline
+                    class="black-color"
+                    (click)="downloadPdf()">
+                download pdf
+            </button>
+
+        </div>
+        <!--/details__btns-->
+
+        <!--note-->
+        <div class="note note_alert" padding>
+
+            <!--note__title-->
+            <h3 class="note__title note__title_simple">
+                Reference Number
+            </h3>
+            <!--/note__title-->
+
+            <p>
+                Please ensure to include the reference number with the wire transfer in the details section so we
+                may credit your account quickly
+            </p>
+
+            <div class="note__info">
+
+                <p>
+                    Your Reference Number
+                </p>
+
+                <strong>{{ curData.referenceNumber.value }}</strong>
+
+            </div>
+
+        </div>
+        <!--/note-->
+
+        <!--note-->
+        <div class="note note_dark" padding>
+
+            <!--note__title-->
+            <h3 class="note__title note__title_simple">
+                Note
+            </h3>
+            <!--/note__title-->
+
+            <p>
+                Make sure that the bank account is under the same name as your Jubiter account, to avoid delays or
+                a complete reject of your payment.
+            </p>
+
+            <p>
+                To complete your deposit please send a wire transfer denominated in USD to the instructions provided.
+                Make sure to send the exact amount as well as to pay any applicable fees by your bank for the transfer.
+            </p>
+
+            <p>
+                We will credit your account with the exact amount we receive.
+            </p>
+
+            <p>
+                You must initiate the payment within the next business day or the conditions for this order may change
+                without notice.
+            </p>
+
+        </div>
+        <!--/note-->
+
+        <button ion-button block
+                type="button"
+                (click)="toSuccess()"
+                [class.spinner]="isLoad">
+            Done
+        </button>
+
+    </div>
+    <!--/details-->
+
+</ion-content>

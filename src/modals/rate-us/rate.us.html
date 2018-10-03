@@ -1,0 +1,143 @@
+<!--main-modal-->
+<div class="main-modal full-page rate-us">
+
+    <!--close-btn-->
+    <button type="button" class="close-btn"
+            *ngIf="rateModel.step !== 2"
+            [@VisibilityChanged]
+            (click)="closeModal()"></button>
+    <!--/close-btn-->
+
+    <!--main-modal__centered-->
+    <div padding
+         class="main-modal__centered main-modal__centered_transparent"
+         *ngIf="rateModel.step === 0" [@VisibilityChanged]>
+
+        <!--rate-us__first-->
+        <div class="rate-us__first">
+
+            <!--rate-us__image-->
+            <div class="rate-us__image">
+                <img width="128" height="128" src="../../assets/icon/icon-bubble-on-white.svg" alt="">
+            </div>
+            <!--/rate-us__image-->
+
+            <!--rate-us__title-->
+            <h3 class="rate-us__title">
+                How would you rate Jubiter?
+            </h3>
+            <!--/rate-us__title-->
+
+            <!--rate-us__stars-->
+            <div class="rate-us__stars">
+                <jb-stars [rateModel]="rateModel"></jb-stars>
+            </div>
+            <!--/rate-us__stars-->
+
+            <!--rate-us__text-->
+            <p class="rate-us__text">
+                Tap the number of stars you <br/>
+                would give us.
+            </p>
+            <!--/rate-us__text-->
+
+        </div>
+        <!--/rate-us__first-->
+
+    </div>
+    <!--/main-modal__centered-->
+    
+    <div padding
+         class="rate-us__feedback"
+         *ngIf="rateModel.step === 1" [@VisibilityChanged]>
+
+        <!--rate-us__title-->
+        <h2 class="rate-us__title">
+            Give us your<br/>
+            feedback, please
+        </h2>
+        <!--/rate-us__title-->
+
+        <!--rate-us__feedback-form-->
+        <form class="rate-us__feedback-form main-form"
+              [formGroup]="feedbackForm">
+
+            <fieldset>
+
+                <ion-textarea name="message"
+                              placeholder="Share your feelings with us. What is good? What could be better?"
+                              jbInputOnFocus
+                              [formControl]="feedbackForm.controls['message']"></ion-textarea>
+            </fieldset>
+
+            <button ion-button block
+                    [disabled]="!feedbackForm.valid"
+                    [class.spinner]="isLoad"
+                    (click)="submitForm()">
+                Send message
+            </button>
+
+        </form>
+        <!--/rate-us__feedback-form-->
+        
+    </div>
+
+    <!--success-msg-->
+    <div class="success-msg success-msg_transparent full-page"
+         *ngIf="rateModel.step === 2"
+         [@VisibilityChanged]>
+
+        <ion-content>
+
+            <!--success-msg__centered-->
+            <div class="success-msg__centered">
+
+                <!--success-msg__icon-->
+                <div class="success-msg__icon">
+                    <img width="128" height="128" src="../assets/icon/icon-bubble-on-white.svg" alt="">
+                </div>
+                <!--/success-msg__icon-->
+
+                <!--success-msg__title-->
+                <h2 class="success-msg__title">
+                    Thank you for your<br/>
+                    feedback
+                </h2>
+                <!--/success-msg__title-->
+
+                <!--success-msg__text-->
+                <p class="success-msg__text">
+                    We’ll get in touch with you shortly
+                </p>
+                <!--/success-msg__text-->
+
+            </div>
+            <!--/success-msg__centered-->
+
+        </ion-content>
+
+        <ion-footer>
+
+            <div class="footer__wrap footer__wrap_transparent">
+
+                <button ion-button block
+                        (click)="closeModal()"
+                        type="button">
+                    Got it
+                </button>
+
+            </div>
+
+        </ion-footer>
+
+    </div>
+    <!--/success-msg-->
+
+</div>
+<!--/main-modal-->
+
+
+
+
+
+

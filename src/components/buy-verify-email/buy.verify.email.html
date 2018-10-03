@@ -1,0 +1,125 @@
+<!--step 1-->
+<div *ngIf="!isSend">
+
+    <!--note-->
+    <div class="note">
+
+        <!--note__title-->
+        <h3 class="note__title note__title_simple">Verify email</h3>
+        <!--/note__title-->
+
+        <p>To be able to buy bitcoins plesae verify your email first</p>
+
+    </div>
+    <!--/note-->
+
+    <!--levels-->
+    <div class="levels">
+
+        <!--levels__item-->
+        <div class="levels__item">
+
+            <!--levels__item-cards-->
+            <div class="levels__item-cards">
+
+                <!--levels__item-card-->
+                <div class="levels__item-card">
+
+                    <h3>Email</h3>
+
+                    <p>{{ email }}</p>
+
+                    <button ion-button small block
+                            [class.spinner]="isLoad"
+                            (click)="getLink()">
+                        get verification link
+                    </button>
+
+                </div>
+                <!--/levels__item-card-->
+
+            </div>
+            <!--/levels__item-cards-->
+
+        </div>
+        <!--/levels__item-->
+
+    </div>
+    <!--/levels-->
+
+    <!--note-->
+    <div class="note">
+
+        <!--note__title-->
+        <h3 class="note__title">Note</h3>
+        <!--/note__title-->
+
+        <p>We will send you an SMS with a 6 digit confirmation code, please enter the code into the corresponding
+            field.</p>
+        <p>Receiving SMS code could take up to 1 min, please be patient.</p>
+        <p>In the event that you did not receive an SMS from us please request it again or contact our support.</p>
+
+    </div>
+    <!--/note-->
+</div>
+<!--/step 1-->
+
+<!--step 2-->
+<div class="self-vertical-aligned" *ngIf="isSend" [@VisibilityChanged]>
+
+    <div class="success-msg full-page">
+        <!--success-msg__centered-->
+        <div class="success-msg__centered" *ngIf="!isVerified">
+
+            <!--success-msg__icon-->
+            <div class="success-msg__icon">
+                <img width="128" height="128" src="../assets/icon/email-send.svg" alt="">
+            </div>
+            <!--/success-msg__icon-->
+
+            <!--success-msg__title-->
+            <h2 class="success-msg__title">
+                Verification Email <br/>
+                Was Sent
+            </h2>
+            <!--/success-msg__title-->
+
+            <!--success-msg__text-->
+            <p class="success-msg__text">
+                To confirm your email address, tap the button in the email we sent to
+                <strong>{{ email }}</strong>
+            </p>
+            <!--/success-msg__text-->
+
+        </div>
+        <!--/success-msg__centered-->
+
+        <!--success-msg__centered-->
+        <div class="success-msg__centered" *ngIf="isVerified" [@VisibilityChanged]>
+
+            <!--success-msg__icon-->
+            <div class="success-msg__icon">
+                <img width="128" height="128" src="../assets/imgs/email-was-verified.svg" alt="">
+            </div>
+            <!--/success-msg__icon-->
+
+            <!--success-msg__title-->
+            <h2 class="success-msg__title">
+                Your Email Address <br> Was Verified
+            </h2>
+            <!--/success-msg__title-->
+
+            <ion-footer padding>
+                <button ion-button small block
+                        (click)="goToNextStep()">
+                    proceed to {{ items[activeStep + 1].title }}
+                </button>
+            </ion-footer>
+
+        </div>
+        <!--/success-msg__centered-->
+
+    </div>
+
+</div>
+<!--step 2-->

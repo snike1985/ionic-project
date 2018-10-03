@@ -1,0 +1,248 @@
+
+.levels {
+
+    &__text {
+        margin-bottom: 24px;
+        font-size: 14px;
+        line-height: 1.43;
+        color: color($colors, dark);
+    }
+    &__wrap {
+        margin-bottom: 24px;
+    }
+    &__item {
+        color: color($colors, dark);
+        font-family: $rubik-font;
+    }
+    &__item-title {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 1.33;
+        letter-spacing: -1px;
+    }
+    &__item-text {
+        position: relative;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-right: 60px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.43;
+        letter-spacing: -0.5px;
+    }
+    &__item-card {
+        margin-top: 16px;
+        padding: $main-padding;
+        background-color: #f3f5f9;
+        color: color($colors, dark);
+        position: relative;
+
+        h4 {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+            text-align: center;
+            padding: 0 56px;
+            margin: 5px 0 14px;
+        }
+
+        &_helper {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            left: 16px;
+            height: 16px;
+            z-index: 1;
+            background: url(../../assets/icon/icon-help-small.svg) 100% 0 no-repeat;
+
+            &-clicker {
+                display: block;
+                content: '';
+                position: absolute;
+                top: -16px;
+                right: -16px;
+                width: 50px;
+                height: 50px;
+            }
+            &-text {
+                position: absolute;
+                top: 0;
+                right: 0;
+                max-width: 80%;
+                background-color: #fff;
+                font-size: 14px;
+                line-height: 1.43;
+                padding: 30px 24px;
+                box-shadow: 0 6px 12px 0 rgba(26, 55, 79, 0.08);
+
+                strong {
+                    display: block;
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 1.25;
+                    letter-spacing: -0.5px;
+                    padding-bottom: 16px;
+                }
+
+                &:after {
+                    display: block;
+                    content: '';
+                    position: absolute;
+                    top: 6px;
+                    right: 6px;
+                    width: 24px;
+                    height: 24px;
+                    background: url(../../assets/icon/icon-close-dark.svg) 0 0 no-repeat;
+                }
+            }
+        }
+
+        h3 {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: -0.6px;
+
+            &.is-pendind {
+
+                &:after {
+                    position: relative;
+                    top: 3px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 16px;
+                    height: 16px;
+                    margin-right: 4px;
+                    background-image: url(../../assets/icon/icon-locked-black.svg);
+                    background-size: contain;
+                    content: '';
+                }
+            }
+        }
+        p {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            max-height: 1.33 * 2;
+            text-overflow: ellipsis;
+            margin-top: 0;
+            margin-bottom: 24px;
+            font-size: 12px;
+            line-height: 1.33;
+        }
+        img {
+            display: block;
+            margin: 0 auto 8px;
+        }
+    }
+    &__item-status {
+        position: relative;
+        font-size: 11px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: -0.3px;
+        padding-left: 20px;
+
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            display: inline-block;
+            vertical-align: middle;
+            width: 16px;
+            height: 16px;
+            margin-top: -1px;
+            transform:translateY(-50%);
+            content: '';
+        }
+        &.confirm:before {
+            background-image: url(../../assets/icon/icon-confirmed-small.svg);
+            background-size: contain;
+        }
+        &.pending:before {
+            background-image: url(../../assets/icon/icon-pending-small.svg);
+            background-size: contain;
+        }
+    }
+    &__item-disclose {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        background: transparent;
+        padding: 0;
+        font-family: $roboto-font;
+        font-size: 12px;
+        line-height: 1.33;
+        color: color($colors, primary);
+        border-bottom: dashed 1px color($colors, primary);
+    }
+    &__item-card-status {
+        position: relative;
+        padding-left: 24px;
+        font-family: $rubik-font;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.43;
+        text-transform: uppercase;
+        letter-spacing: -0.5px;
+        color: color($colors, dark);
+
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            margin-top: -1px;
+            width: 16px;
+            height: 16px;;
+            content: '';
+        }
+        &.rejected {
+            margin-bottom: 24px;
+
+            &:before {
+                background-image: url(../../assets/icon/icon-high-alert.svg);
+                background-size: contain;
+            }
+        }
+        &.confirm {
+
+            &:before {
+                background-image: url(../../assets/icon/icon-confirmed-small.svg);
+                background-size: contain;
+            }
+        }
+    }
+    &__address {
+        margin-bottom: 24px;
+
+        h4 {
+            margin: 0 0 8px;
+            font-family: $rubik-font;
+            font-size: 14px;
+            font-weight: 500;
+            font-style: normal;
+            line-height: 1.43;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            color: color($colors, dark);
+        }
+        address {
+            margin: 0;
+            font-size: 12px;
+            font-style: normal;
+            line-height: 1.33;
+            color: color($colors, dark);
+        }
+    }
+}

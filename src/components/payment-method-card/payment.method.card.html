@@ -1,0 +1,194 @@
+<form class="main-form"
+      [formGroup]="buyWithCardForm"
+      (ngSubmit)="submitBuyWithCard()">
+
+    <p class="pay-card__warn">We will only accept cards in your name, please do not use someone else's card</p>
+
+    <fieldset>
+        <ion-label stacked>Card Number</ion-label>
+
+        <div>
+            <ion-input type="tel"
+                       name="cardNumber"
+                       jbInputOnFocus
+                       placeholder="XXXX XXXX XXXX XXXX"
+                       ccNum
+                       [formControl]="buyWithCardForm.controls['cardNumber']"></ion-input>
+        </div>
+
+        <div *ngIf="validatorService.isErrored(buyWithCardForm.controls['cardNumber'])"
+             [@SlideIn]
+             class="main-form__validator-error">
+            Please enter valid Card Number.
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <ion-label stacked>Card Holder Name</ion-label>
+
+        <div>
+            <ion-input type="text"
+                       name="cardName"
+                       jbInputOnFocus
+                       placeholder="First and last name on card"
+                       [formControl]="buyWithCardForm.controls['cardName']"></ion-input>
+        </div>
+
+        <div *ngIf="validatorService.isErrored(buyWithCardForm.controls['cardName'])"
+             [@SlideIn]
+             class="main-form__validator-error">
+            Please enter Card Holder's Name.
+        </div>
+    </fieldset>
+
+    <div class="main-form__double-fieldset">
+
+        <fieldset>
+            <ion-label stacked>Expiration</ion-label>
+
+            <div>
+                <ion-input type="tel"
+                           name="cardExpDate"
+                           jbInputOnFocus
+                           placeholder="MM/YY"
+                           ccExp
+                           [formControl]="buyWithCardForm.controls['cardExpDate']"></ion-input>
+            </div>
+
+            <div *ngIf="validatorService.isErrored(buyWithCardForm.controls['cardExpDate'])"
+                 [@SlideIn]
+                 class="main-form__validator-error">
+                Invalid Expiration Date.
+            </div>
+        </fieldset>
+
+        <fieldset class="masked-input">
+            <ion-label stacked class="ion-label-heped">
+                <span>CVV/CVC</span>
+                <a href="#" class="">What is this?</a>
+            </ion-label>
+
+            <div>
+                <ion-input type="tel"
+                           name="cardCvv"
+                           jbInputOnFocus
+                           placeholder="XXX"
+                           ccCvc
+                           [formControl]="buyWithCardForm.controls['cardCvv']"></ion-input>
+            </div>
+
+            <div *ngIf="validatorService.isErrored(buyWithCardForm.controls['cardCvv'])"
+                 [@SlideIn]
+                 class="main-form__validator-error">
+                Invalid CVV/CVC.
+            </div>
+        </fieldset>
+
+    </div>
+
+    <jb-upload-document-onchange
+        [data]="selfieData"
+        (uloadedImageLength)="setUloadedImageLength($event)">
+    </jb-upload-document-onchange>
+
+    <!--change ammount-->
+    <div class="pay-card-change-amm">
+
+        <div class="pay-card-change-amm__title">
+            <span>Buy Bitcoins</span>
+            <div class="pay-card-change-amm__imgs">
+                <img src="../assets/icon/visa-on-white-grey.svg" alt="">
+                <img src="../assets/icon/master-card-on-white-grey.svg" alt="">
+            </div>
+        </div>
+
+        <div class="pay-card-change-amm__edit" *ngIf="!isInEdit">
+
+            <div class="pay-card-change-amm__edit-icon" (click)="toggleEditAmmount()"></div>
+            <div class="pay-card-change-amm__edit-in">{{ roundedIncome }} {{ exchangeData.buyCurrency }} for</div>
+            <div class="pay-card-change-amm__edit-out">{{ exchangeData.sellAmmount }} USD</div>
+
+        </div>
+
+        <div class="main-form" *ngIf="isInEdit" [@VisibilityChanged]>
+            <div class="quick-buy__area">
+
+                <div class="quick-buy__area-col">
+
+                    <ion-label stacked>Spend, {{ exchangeData.sellCurrency }}</ion-label>
+
+                    <div>
+                        <ion-input type="tel"
+                                   name="spend"
+                                   [formControl]="buyWithCardForm.controls['spend']"
+                                   [(ngModel)]="exchangeData.sellAmmount"
+                                   jbInputOnFocus></ion-input>
+                    </div>
+
+                </div>
+
+                <div class="quick-buy__area-col">
+
+                    <ion-label stacked>Receive, {{ exchangeData.buyCurrency }}</ion-label>
+
+                    <div>
+                        <ion-input type="tel"
+                                   name="receive"
+                                   [formControl]="buyWithCardForm.controls['receive']"
+                                   [ngModel]="roundedIncome"
+                                   readonly></ion-input>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="coin-buy__recalculate">
+            <div class="loading-info">
+                <div class="loading-info__loader">
+                    <div class="loader"></div>
+                </div>
+                <div class="loading-info__content">
+                    <p>The price will be recalculated in 67 sec</p>
+                    <a href="#">How is the price calculated?</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pay-card-change-amm__title">
+            <span>Summary</span>
+        </div>
+
+        <dl class="details-list">
+
+            <dt>Exchange rate:</dt>
+            <dd>{{ exchangeData.rate | number:'1.2-2' }} {{ exchangeData.sellCurrency }}</dd>
+
+            <dt>Processing fee:</dt>
+            <dd>{{ exchangeData.sellAmmount*exchangeData.exchangeFee | number:'1.2-2' }} {{ exchangeData.sellCurrency }}
+            </dd>
+
+            <dt>Total spend:</dt>
+            <dd>{{ exchangeData.sellAmmount | number:'1.2-2' }} {{ exchangeData.sellCurrency }}</dd>
+
+            <dt>Total receive:</dt>
+            <dd>{{ roundedIncome }} {{ exchangeData.buyCurrency }}</dd>
+
+        </dl>
+
+
+    </div>
+    <!--/change ammount-->
+
+    <p class="pay-card-paragraph">The billing descriptor you will see on your credit card statement will be Jubiter.com
+        (855) 879-9121. Operated by Jubiter Technologies OU. Registration #14439099. Address: Harju maakond, Tallin,
+        Kesklinna linnaosa, Roosikrantsi tn 2-K432, 1019, Estonia</p>
+
+    <button ion-button block
+            type="submit"
+            [class.spinner]="isLoad"
+            [disabled]="!buyWithCardForm.valid || !uloadedImageLength">
+        buy bitcoins
+    </button>
+
+</form>

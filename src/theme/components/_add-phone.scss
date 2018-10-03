@@ -1,0 +1,14 @@
+.add-phone {
+    padding-top: 24px;
+    box-shadow: 0 -3px 0 0 rgba(0, 0, 0, 0.1);
+
+    button {
+        margin-bottom: 16px;
+    }
+    p {
+        font-size: 12px;
+        line-height: 1.67;
+        letter-spacing: normal;
+        color: color($colors, dark);
+    }
+}

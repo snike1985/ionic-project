@@ -1,0 +1,19 @@
+.switcher {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__text {
+        flex: 0 0 70%;
+        margin: 0;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: $rubik-font;
+        letter-spacing: -0.5px;
+        color: color($colors, dark);
+    }
+
+    .toggle-ios {
+        padding: 6px 0;
+    }
+}

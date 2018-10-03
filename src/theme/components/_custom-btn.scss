@@ -1,0 +1,51 @@
+.custom-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 7px;
+    background-color: #f3f5f9;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: -0.5px;
+    color: color($colors, primary);
+    text-align: left;
+
+    &_icon {
+        justify-content: flex-start;
+
+        .custom-btn__wrap {
+            width: calc(100% - 48px);
+        }
+    }
+
+    &__icon {
+        width: 32px;
+        height: 32px;
+        margin-right: 16px;
+
+        img {
+            display: block;
+            width: 32px;
+            height: 32px;
+        }
+    }
+
+    &__wrap {
+
+    }
+
+    &__text {
+        display: block;
+        font-size: 12px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: rgba(43, 43, 44, 0.6);
+    }
+}

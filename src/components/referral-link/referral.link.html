@@ -1,0 +1,163 @@
+<!--referrals__title-->
+<h4 class="referrals__title link">Share referral link</h4>
+<!--/referrals__title-->
+
+<!--referrals__hint-->
+<dl class="referrals__hint">
+    <dt>hint:</dt>
+    <dd>Post it in your social media</dd>
+</dl>
+<!--/referrals__hint-->
+
+<!--referrals__links-->
+<div class="referrals__links">
+
+    <!--referrals__links-item-->
+    <div class="referrals__links-item" *ngFor="let item of linksModel">
+
+        <!--referrals__links-title-->
+        <h4 class="referrals__links-title">{{ item.name }}</h4>
+        <!--/referrals__links-title-->
+
+        <!--referrals__links-wrap-->
+        <div class="referrals__links-wrap">
+            <span>{{ item.url }}</span>
+            <button (click)="shareLink(item.url)">Share</button>
+        </div>
+        <!--/referrals__links-wrap-->
+
+    </div>
+    <!--/referrals__links-item-->
+
+</div>
+<!--/referrals__links-->
+
+<button *ngIf="!isCreateState && !isCreateStateDisable"
+        [@SlideIn]
+        ion-button block outline small
+        type="button"
+        class="black-color referrals__btn referrals__btn_small-margin"
+        (click)="toggleFormVisible()">
+    + Add extra link
+</button>
+
+<form class="referrals__form main-form"
+      *ngIf="isCreateState"
+      [@SlideIn]
+      padding
+      [formGroup]="linkForm"
+      (ngSubmit)="generateLink()">
+
+    <fieldset>
+
+        <ion-label stacked>Link name</ion-label>
+
+        <div>
+            <ion-input type="text"
+                       name="link"
+                       jbInputOnFocus
+                       [formControl]="linkForm.controls['link']"></ion-input>
+        </div>
+
+        <div *ngIf="validatorService.isErrored(linkForm.controls['link'])"
+             [@SlideIn]
+             class="main-form__validator-error">
+            Please enter a link name.
+        </div>
+
+    </fieldset>
+
+    <div class="referrals__form-btns">
+
+        <button ion-button small
+                [class.spinner]="isLinkCreate"
+                [disabled]="!linkForm.valid">
+            generate link
+        </button>
+
+        <button ion-button small
+                type="button"
+                (click)="toggleFormVisible()"
+                class="no-bg">
+            cancel
+        </button>
+
+    </div>
+
+</form>
+
+<!--referrals__summary-->
+<div class="referrals__summary">
+
+    <!--referrals__summary-item-->
+    <div class="referrals__summary-item" *ngFor="let item of linksModel">
+
+        <h5>{{ item.name }}</h5>
+
+        <!--referrals__table-->
+        <div class="referrals__table">
+
+            <div>
+                <!--referrals__table-head-->
+                <div class="referrals__table-row referrals__table-head">
+                    clicks
+                </div>
+                <!--/referrals__table-head-->
+                <!--referrals__table-body-->
+                <div class="referrals__table-row referrals__table-body">
+                    {{ item.clicks }}
+                </div>
+                <!--/referrals__table-body-->
+            </div>
+
+            <div>
+                <!--referrals__table-head-->
+                <div class="referrals__table-row referrals__table-head">
+                    regs.
+                </div>
+                <!--/referrals__table-head-->
+                <!--referrals__table-body-->
+                <div class="referrals__table-row referrals__table-body">
+                    {{ item.regs }}
+                </div>
+                <!--/referrals__table-body-->
+            </div>
+
+            <div>
+                <!--referrals__table-head-->
+                <div class="referrals__table-row referrals__table-head">
+                    deposits
+                </div>
+                <!--/referrals__table-head-->
+                <!--referrals__table-body-->
+                <div class="referrals__table-row referrals__table-body">
+                    {{ item.deposits }}
+                </div>
+                <!--/referrals__table-body-->
+            </div>
+
+            <div>
+                <!--referrals__table-head-->
+                <div class="referrals__table-row referrals__table-head">
+                    earned
+                </div>
+                <!--/referrals__table-head-->
+                <!--referrals__table-body-->
+                <div class="referrals__table-row referrals__table-body green">
+                    ${{ item.earned }}
+                </div>
+                <!--/referrals__table-body-->
+            </div>
+
+        </div>
+        <!--/referrals__table-->
+
+    </div>
+    <!--/referrals__summary-item-->
+
+</div>
+<!--/referrals__summary-->
+
+
+
+

@@ -1,0 +1,56 @@
+<ion-header>
+
+    <ion-toolbar>
+
+        <ion-buttons start>
+            <button ion-button
+                    type="button"
+                    color="primary"
+                    icon-only
+                    (click)="closeModal()">
+                <ion-icon name="md-close"></ion-icon>
+            </button>
+        </ion-buttons>
+
+        <ion-title>
+            Buy Coins
+        </ion-title>
+
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content class="dark-bg popup-streched-content">
+
+    <div class="content-card content-card_full-width">
+        <jb-scroll-steps [items]="buyCoinSteps" [activeStep]="currentStep"></jb-scroll-steps>
+    </div>
+
+    <div class="content-card content-card__full-height">
+
+        <jb-buy-verify-email
+            [items]="buyCoinSteps"
+            [activeStep]="currentStep"
+            (goNext)="incStep()"
+            *ngIf="buyCoinSteps[currentStep].name == 'email'"></jb-buy-verify-email>
+
+        <jb-buy-personal-info
+            [items]="buyCoinSteps"
+            [activeStep]="currentStep"
+            (goNext)="incStep()"
+            *ngIf="buyCoinSteps[currentStep].name == 'personal'"></jb-buy-personal-info>
+
+        <jb-buy-verify-id
+            [items]="buyCoinSteps"
+            [activeStep]="currentStep"
+            (goNext)="incStep()"
+            *ngIf="buyCoinSteps[currentStep].name == 'id'"></jb-buy-verify-id>
+
+        <jb-buy-payment-details
+            [items]="buyCoinSteps"
+            [activeStep]="currentStep"
+            (goNext)="incStep()"
+            *ngIf="buyCoinSteps[currentStep].name == 'payment'"></jb-buy-payment-details>
+    </div>
+
+</ion-content>

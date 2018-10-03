@@ -1,0 +1,68 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title><img src="assets/imgs/page-logo.svg" alt="Jubiter"></ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content  class="dark-bg">
+
+    <div class="coin-price">
+        <div class="coin-price__controls">
+            <jb-scroll-controls [items]="prices"></jb-scroll-controls>
+        </div>
+        <div class="coin-price__content">
+            <div class="coin-price__head">
+                <div class="current-coin-info">
+                    <div class="custom-select custom-select_currency">
+                        <div class="custom-select__title">{{ prices[0].currentPrice[currentCurrency] }}</div>
+                        <div class="custom-select__value" (click)="presentActionSheet()">{{ currentCurrency }}</div>
+                    </div>
+                    <div class="current-coin-info__last-change"
+                         [ngClass]="prices[0].lastChangePercent < 0 ? 'down' : 'up'">
+                         <span>
+                        {{ calculateLastChangeValue(prices[0].lastChangePercent, prices[0].currentPrice[currentCurrency]) }}
+                        {{ currentCurrency }}
+                        ({{ prices[0].lastChangePercent }} %)
+                    </span>
+
+                        since last week
+                    </div>
+                </div>
+                <div class="dashboard__head">
+
+                </div>
+                <div class="dashboard__last-change" [ngClass]="prices[0].lastChangePercent < 0 ? 'down' : 'up'">
+
+                </div>
+            </div>
+
+            <div class="scroll-controls">
+                <jb-scroll-controls [items]="chartPeriods"></jb-scroll-controls>
+            </div>
+
+            <div class="coin-price__chart">
+                <div class="chart"></div>
+            </div>
+
+            <div class="coin-price__btns">
+                <button class="custom-btn custom-btn_icon">
+                    <i class="custom-btn__icon"><img src="../../assets/imgs/icon-send.svg" alt=""></i>
+                    <div class="custom-btn__wrap">
+                        Buy
+                    </div>
+                </button>
+                <button class="custom-btn custom-btn_icon">
+                    <i class="custom-btn__icon"><img src="../../assets/imgs/icon-sell.svg" alt=""></i>
+                    <div class="custom-btn__wrap">
+                        Sell
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <jb-buy-coin></jb-buy-coin>
+</ion-content>

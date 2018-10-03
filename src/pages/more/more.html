@@ -1,0 +1,25 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>More</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+    <ion-list class="main-list">
+
+        <button class="main-list__item"
+                ion-item
+                *ngFor="let item of menuList"
+                (click)="itemSelected(item.link)">
+
+            <strong>{{ item.title }}</strong>
+            <span *ngIf="item.subTitle">{{ item.subTitle }}</span>
+        </button>
+
+    </ion-list>
+
+</ion-content>

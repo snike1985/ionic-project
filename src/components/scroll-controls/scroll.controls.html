@@ -1,0 +1,10 @@
+<div class="scroll-controls">
+  <div class="scroll-controls__item"
+       *ngFor="let item of items"
+       [class.active]="item.isActive"
+       (touchmove)="touchMove($event)"
+       (touchstart)="touchstart($event)" (touchend)="touchend($event)"
+       (click)="clickItem($event, item)">
+    {{ item.title }}
+  </div>
+</div>

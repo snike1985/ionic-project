@@ -1,0 +1,97 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>Referral program</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content (ionScroll)="onScroll()">
+
+    <!--referrals-->
+    <div class="referrals dark-bg">
+
+        <!--referrals__info-->
+        <div class="referrals__info container" padding>
+
+            <h3 *ngIf="curTab === 'Invite'">Get $25 referal fee for any verfied user that deposits $100 or more</h3>
+            <h3 *ngIf="curTab === 'Link'">
+               <span>467 registerations by your references</span>
+                $11,675 Potential income
+            </h3>
+
+            <div class="referrals__info-card">
+
+                <div>
+                    Referral<br/>
+                    program<br/>
+                    balance
+                </div>
+
+                <div>
+
+                    <div class="referrals__info-fiat">
+                        0.00 <span>USD</span>
+                    </div>
+                    <div class="referrals__info-crypto">
+                        0.0000 BTC
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="tabs-navigate" #tabsNavigate>
+                <div class="tabs-navigate__item"
+                     *ngFor="let tab of tabs"
+                     (click)="toggleTab(tab)"
+                     [class.active]="tab.isActive">{{ tab.name }}
+                </div>
+            </div>
+
+        </div>
+        <!--/referrals__info-->
+
+        <!--referrals__tabs-->
+        <div class="referrals__tabs">
+
+            <div [ngSwitch]="curTab">
+
+                <div *ngSwitchCase="tabs[0].name" [@VisibilityChanged]>
+
+                    <div class="container">
+
+                        <jb-referral-invite [invitedModel]="invitedModel"
+                                            [isLoad]="isLoad"></jb-referral-invite>
+
+                    </div>
+
+                </div>
+
+                <div *ngSwitchCase="tabs[1].name" [@VisibilityChanged]>
+
+                    <div class="container">
+
+                        <jb-referral-link [linksModel]="linksModel"></jb-referral-link>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!--/referrals__tabs-->
+
+    </div>
+    <!--/referrals-->
+
+</ion-content>
+
+<div class="tabs-navigate tabs-navigate_fixed" [class.fixed]="fixed" [style.top]="content.contentTop + 'px'">
+    <div class="tabs-navigate__item"
+         *ngFor="let tab of tabs"
+         (click)="toggleTab(tab)"
+         [class.active]="tab.isActive">{{ tab.name }}
+    </div>
+</div>

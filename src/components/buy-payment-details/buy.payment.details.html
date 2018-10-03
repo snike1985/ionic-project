@@ -1,0 +1,20 @@
+<h1 class="buy-payment-details__title">Choose Payment Method</h1>
+
+<jb-scroll-iconed-controls
+    [items]="buyCoinTabs"
+    [activeTab]="activeTab"
+    (setActiveState)="setActiveState($event)"
+></jb-scroll-iconed-controls>
+
+<div class="buy-payment-methods">
+
+    <jb-payment-method-card
+        *ngIf="buyCoinTabs[activeTab].name == 'card'"></jb-payment-method-card>
+    <jb-payment-method-pm
+        *ngIf="buyCoinTabs[activeTab].name == 'pm'"></jb-payment-method-pm>
+    <jb-payment-method-payeer
+        *ngIf="buyCoinTabs[activeTab].name == 'payeer'"></jb-payment-method-payeer>
+    <jb-payment-method-usdt
+        *ngIf="buyCoinTabs[activeTab].name == 'usdt'"></jb-payment-method-usdt>
+
+</div>

@@ -1,0 +1,187 @@
+
+
+<ion-header>
+
+    <ion-toolbar>
+
+        <ion-buttons start>
+            <button ion-button
+                    type="button"
+                    color="primary"
+                    icon-only
+                    (click)="closeModal()">
+                <ion-icon name="md-close"></ion-icon>
+            </button>
+        </ion-buttons>
+
+        <ion-title>
+            Verify email
+        </ion-title>
+
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+
+    <div *ngIf="!isSend && !curData.isVerified">
+
+        <!--levels-->
+        <div class="levels">
+
+            <!--levels__item-->
+            <div class="levels__item">
+
+                <!--levels__item-cards-->
+                <div class="levels__item-cards">
+
+                    <!--levels__item-card-->
+                    <div class="levels__item-card">
+
+                        <h3>{{ curData['name'] }}</h3>
+
+                        <p>{{ curData['value'] }}</p>
+
+                        <button ion-button small block
+                                [class.spinner]="isLoad"
+                                (click)="getLink()">
+                            get verification link
+                        </button>
+
+                    </div>
+                    <!--/levels__item-card-->
+
+                </div>
+                <!--/levels__item-cards-->
+
+            </div>
+            <!--/levels__item-->
+
+        </div>
+        <!--/levels-->
+
+        <!--note-->
+        <div class="note">
+
+            <!--note__title-->
+            <h3 class="note__title">Note</h3>
+            <!--/note__title-->
+
+            <p>
+                We will send you an email to confirm your address.
+            </p>
+
+            <p>
+                In case you didn’t get the link pls check your spam folder.
+            </p>
+
+            <p>
+                If you did not receive an email from jubiter in your spam folder, please request a new verification link or contact our support.
+            </p>
+
+        </div>
+        <!--/note-->
+    </div>
+
+    <!--success-msg-->
+    <div class="success-msg full-page" *ngIf="curData.isVerified" [@VisibilityChanged]>
+
+        <ion-content>
+
+            <!--success-msg__centered-->
+            <div class="success-msg__centered">
+
+                <!--success-msg__icon-->
+                <div class="success-msg__icon">
+                    <img width="128" height="128" src="../assets/imgs/email-was-verified.svg" alt="">
+                </div>
+                <!--/success-msg__icon-->
+
+                <!--success-msg__title-->
+                <h2 class="success-msg__title">
+                    Your Email Address Was Verified
+                </h2>
+                <!--/success-msg__title-->
+
+                <!--success-msg__level-->
+                <div class="success-msg__level">
+
+                    <strong>Level 2</strong>
+                    <p>Buy crypto using credit card</p>
+
+                </div>
+                <!--/success-msg__level-->
+
+            </div>
+            <!--/success-msg__centered-->
+
+        </ion-content>
+
+        <ion-footer>
+
+            <div class="footer__wrap">
+
+                <button ion-button block
+                        (click)="nextStep()"
+                        type="button">
+                    proceed to verification level 2
+                </button>
+
+            </div>
+
+        </ion-footer>
+
+    </div>
+    <!--/success-msg-->
+
+</ion-content>
+
+<!--success-msg-->
+<div class="success-msg full-page" *ngIf="isSend" [@VisibilityChanged]>
+
+    <ion-content>
+
+        <!--success-msg__centered-->
+        <div class="success-msg__centered">
+
+            <!--success-msg__icon-->
+            <div class="success-msg__icon">
+                <img width="128" height="128" src="../assets/icon/email-send.svg" alt="">
+            </div>
+            <!--/success-msg__icon-->
+
+            <!--success-msg__title-->
+            <h2 class="success-msg__title">
+                Verification Email <br/>
+                Was Sent
+            </h2>
+            <!--/success-msg__title-->
+
+            <!--success-msg__text-->
+            <p class="success-msg__text">
+                To confirm your email address, tap the button in the email we sent to
+                <strong>{{ curData[ 'value' ] }}</strong>
+            </p>
+            <!--/success-msg__text-->
+
+        </div>
+        <!--/success-msg__centered-->
+
+    </ion-content>
+
+    <ion-footer>
+
+        <div class="footer__wrap">
+
+            <button ion-button block
+                    (click)="closeModal()"
+                    type="button">
+                Got it
+            </button>
+
+        </div>
+
+    </ion-footer>
+
+</div>
+<!--/success-msg-->

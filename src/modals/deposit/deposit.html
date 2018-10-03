@@ -1,0 +1,414 @@
+<ion-header>
+
+    <ion-toolbar>
+
+        <ion-buttons start>
+            <button ion-button
+                    type="button"
+                    color="primary"
+                    icon-only
+                    (click)="closeModal()">
+                <ion-icon name="md-close"></ion-icon>
+            </button>
+        </ion-buttons>
+
+        <ion-title>
+            Deposit
+        </ion-title>
+
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+
+    <!--deposits-->
+    <div class="deposits main__wrap" *ngIf="!successModel.isError && !successModel.isSuccess">
+
+        <!--main-form-->
+        <div class="main-form">
+
+            <fieldset>
+
+                <ion-item>
+
+                    <ion-label stacked>Currency</ion-label>
+
+                    <ion-select [(ngModel)]="currentCurrency"
+                                interface="action-sheet">
+                        <ion-option *ngFor="let item of currencyList"
+                                    [value]="item.value">{{ item.value }}
+                        </ion-option>
+                    </ion-select>
+
+                </ion-item>
+
+            </fieldset>
+
+            <jb-scroll-iconed-controls
+                [items]="buyCoinTabs"
+                [activeTab]="activeTab"
+                (setActiveState)="setActiveState($event)"
+            ></jb-scroll-iconed-controls>
+
+            <!--deposits__wrap-->
+            <div class="deposits__wrap">
+
+                <fieldset>
+
+                    <ion-label stacked>Amount</ion-label>
+
+                    <div class="main-form__with-text">
+
+                        <span>{{ currentCurrency }}</span>
+
+                        <ion-input name="amount"
+                                   type="tel"
+                                   jbInputOnFocus
+                                   [formControl]="depositForm.controls['amount']"></ion-input>
+                    </div>
+
+                    <div *ngIf="validatorService.isErrored(depositForm.controls['amount'])"
+                         [@SlideIn]
+                         class="main-form__validator-error">
+                        Please enter amount.
+                    </div>
+
+                </fieldset>
+
+                <!--total-info-->
+                <div class="total-info">
+
+                    <!--total-info__col-->
+                    <dl class="total-info__col">
+
+                        <dt>Deposit
+                            total:
+                        </dt>
+
+                        <dd>
+                            {{ depositForm.controls['amount'].value | number:'1.2-2' }} {{ currentCurrency }}
+                        </dd>
+
+                    </dl>
+                    <!--/total-info__col-->
+
+                    <!--total-info__col-->
+                    <dl class="total-info__col">
+
+                        <dt>processing
+                            comission:
+                        </dt>
+
+                        <dd>
+                            {{ depositForm.controls['amount'].value * 0.005 | number:'1.2-2' }} {{ currentCurrency }}
+                        </dd>
+
+                    </dl>
+                    <!--/total-info__col-->
+
+                </div>
+                <!--/total-info-->
+
+                <div *ngIf="buyCoinTabs[activeTab].name === 'bank'">
+
+                    <!--note-->
+                    <div class="note note_dark" padding>
+
+                        <!--note__title-->
+                        <h3 class="note__title note__title_simple">Note</h3>
+                        <!--/note__title-->
+
+                        <p>
+                            We will delay or reject funds if they are sent from an account that is not in
+                            your name. Only send payments from a business account if they have been
+                            registered and approved by Jubiter.
+                        </p>
+
+                        <p>
+                            Bank transfers could take up to 3
+                            business days.
+                        </p>
+
+                    </div>
+                    <!--/note-->
+
+                </div>
+
+                <div *ngIf="buyCoinTabs[activeTab].name === 'card'">
+
+                    <form class="deposits__card"
+                          [formGroup]="cardForm">
+
+                        <div class="deposits__card-head">
+
+                            <div class="deposits__card-head-col">
+                                <h4>Credit
+                                    or Debit Card</h4>
+                            </div>
+
+                            <div class="deposits__card-head-col deposits__card-cards">
+
+                                <p>Verified by</p>
+
+                                <img width="56" height="32" src="../assets/imgs/visa-on-white.svg" alt="">
+                                <img width="56" height="32" src="../assets/imgs/master-card-on-white.svg" alt="">
+
+                            </div>
+
+                        </div>
+
+                        <fieldset>
+                            <ion-label stacked>Card Number</ion-label>
+
+                            <div>
+                                <ion-input type="tel"
+                                           name="cardNumber"
+                                           jbInputOnFocus
+                                           placeholder="XXXX XXXX XXXX XXXX"
+                                           ccNum
+                                           [formControl]="cardForm.controls['cardNumber']"></ion-input>
+                            </div>
+
+                            <div *ngIf="validatorService.isErrored(cardForm.controls['cardNumber'])"
+                                 [@SlideIn]
+                                 class="main-form__validator-error">
+                                Please enter valid Card Number.
+                            </div>
+
+                        </fieldset>
+
+                        <fieldset>
+                            <ion-label stacked>Card Holder Name</ion-label>
+
+                            <div>
+                                <ion-input type="text"
+                                           name="cardName"
+                                           jbInputOnFocus
+                                           placeholder=" First and last name on card"
+                                           [formControl]="cardForm.controls['cardName']"></ion-input>
+                            </div>
+
+                            <div *ngIf="validatorService.isErrored(cardForm.controls['cardName'])"
+                                 [@SlideIn]
+                                 class="main-form__validator-error">
+                                Please enter Card Holder's Name.
+                            </div>
+                        </fieldset>
+
+                        <div class="main-form__double-fieldset">
+
+                            <fieldset>
+                                <ion-label stacked>Expiration</ion-label>
+
+                                <div>
+                                    <ion-input type="tel"
+                                               name="cardExpDate"
+                                               jbInputOnFocus
+                                               placeholder="MM/YY"
+                                               ccExp
+                                               [formControl]="cardForm.controls['cardExpDate']"></ion-input>
+                                </div>
+
+                                <div *ngIf="validatorService.isErrored(cardForm.controls['cardExpDate'])"
+                                     [@SlideIn]
+                                     class="main-form__validator-error">
+                                    Invalid Expiration Date.
+                                </div>
+                            </fieldset>
+
+                            <fieldset class="masked-input">
+                                <ion-label stacked class="ion-label-heped">
+                                    <span>CVV/CVC</span>
+                                    <a href="#" class="">What is this?</a>
+                                </ion-label>
+
+                                <div>
+                                    <ion-input type="tel"
+                                               name="cardCvv"
+                                               jbInputOnFocus
+                                               placeholder="XXX"
+                                               ccCvc
+                                               [formControl]="cardForm.controls['cardCvv']"></ion-input>
+                                </div>
+
+                                <div *ngIf="validatorService.isErrored(cardForm.controls['cardCvv'])"
+                                     [@SlideIn]
+                                     class="main-form__validator-error">
+                                    Invalid CVV/CVC.
+                                </div>
+                            </fieldset>
+
+                        </div>
+
+                    </form>
+
+                    <!--address-->
+                    <dl class="address">
+                        <dt>your address:</dt>
+                        <dd>
+                            Ukraine, Kyiv Oblast, Kiev
+                            21, Knyazhyi Zaton str, 21, apt. 197, 02095
+                        </dd>
+                    </dl>
+                    <!--/address-->
+
+                    <!--note-->
+                    <div class="note note_dark" padding>
+
+                        <!--note__title-->
+                        <h3 class="note__title note__title_simple">Note</h3>
+                        <!--/note__title-->
+
+                        <p>
+                            We will only accept cards in your name, please do not use someone else's card
+                        </p>
+
+                    </div>
+                    <!--/note-->
+
+                </div>
+
+                <button ion-button block
+                        type="submit"
+                        [disabled]="checkDisabled()"
+                        (click)="toDepositDetails()">
+                    Next
+                </button>
+
+            </div>
+            <!--/deposits__wrap-->
+
+        </div>
+        <!--/main-form-->
+
+    </div>
+    <!--/deposits-->
+
+    <!--success-msg-->
+    <div class="success-msg full-page" *ngIf="successModel.isError" [@VisibilityChanged]>
+
+        <ion-content>
+
+            <!--success-msg__centered-->
+            <div class="success-msg__centered">
+
+                <!--success-msg__details-->
+                <div class="success-msg__details">
+
+                    <h3>
+                        Transaction has been declined
+                    </h3>
+
+                    <!--success-msg__details-total-->
+                    <div class="success-msg__details-total">
+
+                        <img width="32" height="32" src="../assets/icon/icon-error-small.svg" alt="">
+
+                        <p>{{ depositForm.controls['amount'].value | number:'1.2-2' }}</p>
+
+                    </div>
+                    <!--/success-msg__details-total-->
+
+                    <p>
+                        The cardholder name on the credit card doesn’t match your account name
+                    </p>
+
+                </div>
+                <!--/success-msg__details-->
+
+            </div>
+            <!--/success-msg__centered-->
+
+        </ion-content>
+
+        <ion-footer>
+
+            <div class="footer__wrap">
+
+                <button ion-button block
+                        (click)="toDepositDetails()"
+                        type="button">
+                    Try again
+                </button>
+
+            </div>
+
+        </ion-footer>
+
+    </div>
+    <!--/success-msg-->
+
+</ion-content>
+
+<!--success-msg-->
+<div class="success-msg full-page" *ngIf="successModel.isSuccess" [@VisibilityChanged]>
+
+    <ion-content padding>
+
+        <!--success-msg__centered-->
+        <div class="success-msg__centered">
+
+            <!--success-msg__details-->
+            <div class="success-msg__details">
+
+                <h3>
+                    You’ve just succesfully deposited money to your USD wallet
+                </h3>
+
+                <!--success-msg__details-total-->
+                <div class="success-msg__details-total">
+
+                    <img width="32" height="32" src="../assets/icon/icon-confirmed-small.svg" alt="">
+
+                    <p>{{ depositForm.controls['amount'].value | number:'1.2-2' }}</p>
+
+                </div>
+                <!--/success-msg__details-total-->
+
+                <!--success-msg__details-list-->
+                <div class="success-msg__details-list">
+
+                    <dl>
+                        <dt>Amount deposited:</dt>
+                        <dd>{{ depositForm.controls['amount'].value | number:'1.2-2' }} {{ currentCurrency }}</dd>
+                    </dl>
+
+                    <dl>
+                        <dt>Processing fee:</dt>
+                        <dd>{{ depositForm.controls['amount'].value * 0.005 | number:'1.2-2' }} {{ currentCurrency }}
+                        </dd>
+                    </dl>
+
+                    <dl>
+                        <dt>Total payed:</dt>
+                        <dd>{{ setTotal() | number:'1.2-2' }} {{ currentCurrency }}</dd>
+                    </dl>
+
+                </div>
+                <!--/success-msg__details-list-->
+
+            </div>
+            <!--/success-msg__details-->
+
+        </div>
+        <!--/success-msg__centered-->
+
+    </ion-content>
+
+    <ion-footer>
+
+        <div class="footer__wrap">
+
+            <button ion-button block
+                    (click)="closeModal()"
+                    type="button">
+                Got it
+            </button>
+
+        </div>
+
+    </ion-footer>
+
+</div>
+<!--/success-msg-->

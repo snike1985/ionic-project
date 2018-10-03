@@ -1,0 +1,93 @@
+<form class="main-modal main-form full-page"
+      [formGroup]="pinForm">
+
+    <ion-header>
+
+        <ion-toolbar>
+
+            <ion-buttons start>
+                <button ion-button
+                        type="button"
+                        color="primary"
+                        icon-only
+                        (click)="closeModal()">
+                    <ion-icon name="md-close"></ion-icon>
+                </button>
+            </ion-buttons>
+
+            <ion-title>
+                Change PIN Code
+            </ion-title>
+
+        </ion-toolbar>
+
+    </ion-header>
+
+    <ion-content padding>
+
+        <div class="change-code">
+
+            <p class="change-code__text"
+               *ngIf="isWrong && tryCount"
+               [@SlideIn]>
+                {{ step === 'current' ? 'PIN code is incorrect' : 'PIN Codes did not match. Try Again.' }}
+            </p>
+
+            <fieldset class="change-code__inner" [class.load]="isLoad" [class.disabled]="!tryCount">
+
+                <ion-label stacked>{{ labelConfig[ step ] }}</ion-label>
+                <jb-pin-code [control]="pinForm.controls['pin']"
+                             [isLocked]="!this.tryCount"></jb-pin-code>
+
+            </fieldset>
+
+            <div class="change-code__error" *ngIf="!tryCount">
+                You Are {{ duration }}s Away From Next Attempt
+            </div>
+
+        </div>
+
+    </ion-content>
+
+</form>
+
+<!--success-msg-->
+<div class="success-msg full-page" *ngIf="isSuccess" [@VisibilityChanged]>
+
+    <ion-content>
+
+        <!--success-msg__centered-->
+        <div class="success-msg__centered">
+
+            <!--success-msg__icon-->
+            <div class="success-msg__icon">
+                <img width="128" height="128" src="../assets/imgs/pin-success.svg" alt="">
+            </div>
+            <!--/success-msg__icon-->
+
+            <h3 class="success-msg__title">
+                You Successfully<br/>
+                Changed Your PIN Code
+            </h3>
+
+        </div>
+        <!--/success-msg__centered-->
+
+    </ion-content>
+
+    <ion-footer>
+
+        <div class="footer__wrap">
+
+            <button ion-button block
+                    (click)="closeModal()"
+                    type="button">
+                Got it
+            </button>
+
+        </div>
+
+    </ion-footer>
+
+</div>
+<!--/success-msg-->

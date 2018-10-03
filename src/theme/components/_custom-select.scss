@@ -1,0 +1,53 @@
+.custom-select {
+    display: flex;
+    white-space: nowrap;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+    color: color($colors, primary);
+
+    &_currency {
+        font-size: 24px;
+        line-height: 1.33;
+        letter-spacing: -1px;
+
+        & .custom-select {
+
+            &__title {
+                margin-right: 8px;
+                color: color($colors, dark);
+            }
+
+            &__value {
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    &__title {
+        display: block;
+        margin-right: 4px;
+    }
+
+    &__value {
+        display: block;
+        position: relative;
+        padding-right: 10px;
+
+        &:after {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 0;
+            height: 0;
+            transform: translate(0,-50%);
+            border-style: solid;
+            border-width: 4px 3px 0 3px;
+            border-color: color($colors, primary) transparent transparent transparent;
+            content: '';
+        }
+    }
+}

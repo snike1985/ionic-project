@@ -1,0 +1,41 @@
+.notifications {
+
+    &__table {
+
+    }
+    &__table-head {
+        margin-top: 7px;
+        height: 36px !important;
+        margin-bottom: 32px !important;
+        box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0.1);
+        font-family: $rubik-font;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: -0.3px;
+        text-transform: uppercase;
+        color: color($colors, dark);
+    }
+    &__table-body {
+        font-size: 14px;
+        line-height: 1.43;
+        color: color($colors, dark);
+    }
+    &__table-row {
+        display: flex;
+        height: 40px;
+        margin-bottom: 20px;
+        justify-content: space-between;
+
+        > div {
+            flex: 0 0 50%;
+
+            &:nth-child(2) {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+    &__table-title {
+        max-width: 100px;
+    }
+}

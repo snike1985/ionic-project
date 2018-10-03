@@ -1,0 +1,91 @@
+<ion-header>
+
+    <ion-toolbar>
+
+        <ion-buttons start>
+            <button ion-button
+                    type="button"
+                    color="primary"
+                    icon-only
+                    (click)="closeModal()">
+                <ion-icon name="md-close"></ion-icon>
+            </button>
+        </ion-buttons>
+
+        <ion-title>
+            Proof of address
+        </ion-title>
+
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+
+    <div class="levels" *ngIf="!curData.isPending" [@VisibilityChanged]>
+
+        <!--levels__text-->
+        <p class="levels__text">
+            Please upload your proof of residency document. It could be utility bill, electricity bill, bank statement. To make sure your application is accepted, please read the requirements.
+        </p>
+        <!--/levels__text-->
+
+        <div class="levels__address" *ngIf="address">
+            <h4>your address:</h4>
+
+            <address>{{ address }}</address>
+        </div>
+
+        <jb-upload-document [data]="curData"></jb-upload-document>
+
+    </div>
+
+</ion-content>
+
+<!--success-msg-->
+<div class="success-msg full-page" *ngIf="curData.isPending" [@VisibilityChanged]>
+
+    <ion-content>
+
+        <!--success-msg__centered-->
+        <div class="success-msg__centered">
+
+            <!--success-msg__icon-->
+            <div class="success-msg__icon">
+                <img width="128" height="128" src="../assets/imgs/pending.svg" alt="">
+            </div>
+            <!--/success-msg__icon-->
+
+            <!--success-msg__title-->
+            <h2 class="success-msg__title">
+                Pending Verification
+            </h2>
+            <!--/success-msg__title-->
+
+            <!--success-msg__text-->
+            <p class="success-msg__text">
+                We have received your proof of residency document. Verification could take up to 24 hours. We will get back to you shortly
+            </p>
+            <!--/success-msg__text-->
+
+        </div>
+        <!--/success-msg__centered-->
+
+    </ion-content>
+
+    <ion-footer>
+
+        <div class="footer__wrap">
+
+            <button ion-button block
+                    (click)="closeModal()"
+                    type="button">
+                Got it
+            </button>
+
+        </div>
+
+    </ion-footer>
+
+</div>
+<!--/success-msg-->

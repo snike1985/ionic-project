@@ -1,0 +1,94 @@
+<!--levels__wrap-->
+<div class="levels__wrap" *ngIf="checkDisabled()">
+
+    <!--levels__item-->
+    <div class="levels__item">
+
+        <!--levels__item-card-->
+        <div class="levels__item-card">
+
+            <h4 *ngIf="config.blockTitle">{{ config.blockTitle }}</h4>
+
+            <div *ngIf="config.blockHelper" class="levels__item-card_helper">
+                <div class="levels__item-card_helper-clicker" (click)="toggleHelpText()"></div>
+                <div class="levels__item-card_helper-text" *ngIf="tooltipIsVisible" (click)="toggleHelpText()" [@VisibilityChanged]>
+                    <strong>{{ config.blockHelper.title }}</strong>
+                    {{ config.blockHelper.text }}
+                </div>
+            </div>
+
+            <img width="96" height="96" src="../assets/imgs/{{ config.iconName }}" alt="id">
+
+            <button ion-button small block
+                    type="button"
+                    (click)="presentActionSheet()">
+                {{ config.btnText }}
+            </button>
+
+        </div>
+        <!--/levels__item-card-->
+
+    </div>
+    <!--/levels__item-->
+
+</div>
+<!--/levels__wrap-->
+
+<!--upload-images-->
+<div class="upload-images" *ngIf="images.length">
+
+    <div class="upload-images__list">
+        <!--upload-images__item-->
+        <div class="upload-images__item" *ngFor="let image of images; let i = index">
+
+            <!--upload-images__item-pic-->
+            <div class="upload-images__item-pic"
+                 [style.background-image]="'url(' + image.url + ')' | jbSafe: 'style'"></div>
+            <!--/upload-images__item-pic-->
+
+            <h4>{{ image.name }}</h4>
+
+            <p class="upload-images__item-error" *ngIf="image.isError">
+                The file size doesn’t accomplish the size requirments.
+            </p>
+
+            <div class="progress-bar" *ngIf="image.isLoad">
+                <div style="width: 80%;"></div>
+            </div>
+
+            <button class="upload-images__item-close" type="button" (click)="deleteItem(i)"></button>
+
+        </div>
+        <!--/upload-images__item-->
+    </div>
+
+</div>
+<!--/upload-images-->
+
+<!--note-->
+<div class="note">
+
+    <!--note__title-->
+    <h3 class="note__title">Requirements</h3>
+    <!--/note__title-->
+
+    <ul>
+        <li>
+            Allowed formats: JPG, GIF, PNG, TIFF or PDF;
+        </li>
+
+        <li>
+            Documents should have Latin characters or have Latin transliteration of main fields.
+        </li>
+
+        <li>
+            Documents should be up to date;
+        </li>
+
+        <li>
+            We accept documents between 500kb to 4MB.
+        </li>
+    </ul>
+
+</div>
+<!--/note-->

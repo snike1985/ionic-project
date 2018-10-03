@@ -1,0 +1,47 @@
+.details-list{
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 1.33;
+    margin: 0;
+    &+.coin-buy__recalculate{
+        margin-bottom: 0;
+        margin-top: 16px;
+    }
+    dt{
+        float: left;
+        clear: left;
+        width: 40%;
+        font-weight: bold;
+        padding: 8px 0 5px;
+    }
+    dd{
+        border-top: solid 1px rgba(151, 151, 151, 0.2);
+        padding: 8px 0 5px 45%;
+        margin: 0;
+        &:first-of-type{
+            border-top-color: transparent;
+        }
+    }
+}
+
+.details-list-big{
+    overflow: hidden;
+    font-size: 14px;
+    line-height: 1.33;
+    margin: 0 0 9px;
+    dt{
+        float: left;
+        clear: left;
+        width: 40%;
+        padding: 14px 0 15px;
+        font-weight: 500;
+    }
+    dd{
+        border-top: solid 1px rgba(151, 151, 151, 0.2);
+        padding: 14px 5% 15px 45%;
+        margin: 0;
+        &:first-of-type{
+            border-top-color: transparent;
+        }
+    }
+}

@@ -1,0 +1,266 @@
+<form class="main-modal main-form full-page"
+      [formGroup]="personalInfoForm"
+      (ngSubmit)="submitPersonalInfo()">
+
+    <ion-header>
+
+        <ion-toolbar>
+
+            <ion-buttons start>
+                <button ion-button
+                        type="button"
+                        color="primary"
+                        icon-only
+                        (click)="closeModal()">
+                    <ion-icon name="md-close"></ion-icon>
+                </button>
+            </ion-buttons>
+
+            <ion-title>
+                Personal information
+            </ion-title>
+
+        </ion-toolbar>
+
+    </ion-header>
+
+    <ion-content padding>
+
+        <div class="main__wrap">
+
+            <fieldset>
+                <ion-label stacked>First Name</ion-label>
+
+                <div>
+                    <ion-input type="text"
+                               name="firstName"
+                               jbInputOnFocus
+                               [formControl]="personalInfoForm.controls['firstName']"></ion-input>
+                </div>
+
+                <div *ngIf="validatorService.isErrored(personalInfoForm.controls['firstName'])"
+                     [@SlideIn]
+                     class="main-form__validator-error">
+                    Please enter First Name.
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <ion-label stacked>Last Name</ion-label>
+
+                <div>
+                    <ion-input type="text"
+                               name="lastName"
+                               jbInputOnFocus
+                               [formControl]="personalInfoForm.controls['lastName']"></ion-input>
+                </div>
+
+                <div *ngIf="validatorService.isErrored(personalInfoForm.controls['lastName'])"
+                     [@SlideIn]
+                     class="main-form__validator-error">
+                    Please enter Last Name.
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+                <ion-label stacked>Middle Name (if you have one)</ion-label>
+
+                <div>
+                    <ion-input type="text"
+                               name="middleName"
+                               jbInputOnFocus
+                               [formControl]="personalInfoForm.controls['middleName']"></ion-input>
+                </div>
+
+            </fieldset>
+
+            <fieldset radio-group [formControl]="personalInfoForm.controls['gender']"
+                      class="main-form__radio-btns">
+
+                <div>
+                    <ion-radio item-start value="male"></ion-radio>
+                    <ion-label>Male</ion-label>
+                </div>
+
+                <div>
+                    <ion-radio item-start value="female"></ion-radio>
+                    <ion-label>Female</ion-label>
+                </div>
+
+            </fieldset>
+
+            <fieldset class="main-form__datepicker">
+
+                <ion-label stacked>Date of Birth</ion-label>
+
+                <ion-datetime displayFormat="D MMMM YYYY"
+                              pickerFormat="MMMM D YYYY"
+                              jbInputOnFocus
+                              [formControl]="personalInfoForm.controls['dateOfBirth']"></ion-datetime>
+
+                <div *ngIf="validatorService.isErrored(personalInfoForm.controls['dateOfBirth'])"
+                     [@SlideIn]
+                     class="main-form__validator-error">
+                    Please enter dateOfBirth.
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+
+                <ion-label stacked>Telephone number</ion-label>
+
+                <!--main-form__searchbar-->
+                <div class="main-form__searchbar phone">
+
+                    <div>
+                        <ion-input type="tel"
+                                   name="phoneNumber"
+                                   jbInputOnFocus
+                                   placeholder="+xx (xxx) xxx xx xx"
+                                   jbTelMask="+99 (999) 999 99 99"
+                                   [formControl]="personalInfoForm.controls['phoneNumber']"></ion-input>
+                    </div>
+
+                    <button (click)="toSearchBar({controlName: 'phoneNumber', type: 'phone'})" type="button">
+                        <img src="../assets/flags/4x3/{{ phoneData.country }}.svg">
+                    </button>
+
+                </div>
+                <!--/main-form__searchbar-->
+
+                <div *ngIf="validatorService.isErrored(personalInfoForm.controls['phoneNumber'])"
+                     [@SlideIn]
+                     class="main-form__validator-error">
+                    Please enter phone.
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+
+                <ion-label stacked>Country</ion-label>
+
+                <!--main-form__searchbar-->
+                <div class="main-form__searchbar country">
+
+                    <div>
+                        <ion-input type="text"
+                                   name="country"
+                                   jbInputOnFocus
+                                   [formControl]="personalInfoForm.controls['country']"></ion-input>
+                    </div>
+
+                    <button (click)="toSearchBar({controlName: 'country', type: 'country'})" type="button"></button>
+
+                </div>
+                <!--/main-form__searchbar-->
+
+                <div *ngIf="validatorService.isErrored(personalInfoForm.controls['country'])"
+                     [@SlideIn]
+                     class="main-form__validator-error">
+                    Please enter country.
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+                <ion-label stacked>ZIP Code</ion-label>
+
+            <div>
+                <ion-input type="tel"
+                           name="zipCode"
+                           jbInputOnFocus
+                           [formControl]="personalInfoForm.controls['zipCode']"></ion-input>
+            </div>
+
+                <div *ngIf="validatorService.isErrored(personalInfoForm.controls['zipCode'])"
+                     [@SlideIn]
+                     class="main-form__validator-error">
+                    Please enter ZIP Code.
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <ion-label stacked>State/ Province</ion-label>
+
+                <div>
+                    <ion-input type="text"
+                               name="province"
+                               jbInputOnFocus
+                               [formControl]="personalInfoForm.controls['province']"></ion-input>
+                </div>
+
+                <div *ngIf="validatorService.isErrored(personalInfoForm.controls['province'])"
+                     [@SlideIn]
+                     class="main-form__validator-error">
+                    Please enter state / province.
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <ion-label stacked>City</ion-label>
+
+                <div>
+                    <ion-input type="text"
+                               name="city"
+                               jbInputOnFocus
+                               [formControl]="personalInfoForm.controls['city']"></ion-input>
+                </div>
+
+                <div *ngIf="validatorService.isErrored(personalInfoForm.controls['city'])"
+                     [@SlideIn]
+                     class="main-form__validator-error">
+                    Please enter city.
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <ion-label stacked>Street Address</ion-label>
+
+                <div>
+                    <ion-input type="text"
+                               name="streetAddress"
+                               jbInputOnFocus
+                               [formControl]="personalInfoForm.controls['streetAddress']"></ion-input>
+                </div>
+
+                <div *ngIf="validatorService.isErrored(personalInfoForm.controls['streetAddress'])"
+                     [@SlideIn]
+                     class="main-form__validator-error">
+                    Please enter street address.
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <ion-label stacked>Apt/ Suite</ion-label>
+
+                <div>
+                    <ion-input type="text"
+                               name="suite"
+                               jbInputOnFocus
+                               [formControl]="personalInfoForm.controls['suite']"></ion-input>
+                </div>
+
+                <div *ngIf="validatorService.isErrored(personalInfoForm.controls['suite'])"
+                     [@SlideIn]
+                     class="main-form__validator-error">
+                    Please enter Apt/ Suite.
+                </div>
+            </fieldset>
+
+            <button ion-button block
+                    type="submit"
+                    [class.spinner]="isLoad"
+                    [disabled]="!personalInfoForm.valid">
+                add personal information
+            </button>
+
+        </div>
+
+    </ion-content>
+
+</form>
+
+

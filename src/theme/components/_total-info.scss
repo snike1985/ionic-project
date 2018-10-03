@@ -1,0 +1,35 @@
+.total-info {
+    display: flex;
+    margin-bottom: 24px;
+
+    &__col {
+        width: 50%;
+        padding-right: 18px;
+        border-right: solid 2px #edeff1;
+        font-family: $rubik-font;
+        color: color($colors, dark);
+        font-weight: 500;
+
+        &:last-child {
+            margin-right: 0;
+            padding-right: 0;
+            padding-left: 22px;
+            border-right: none;
+        }
+        dt {
+            display: block;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            white-space: pre-line;
+            font-size: 11px;
+            letter-spacing: -0.3px;
+        }
+        dd {
+            padding: 0;
+            margin: 0;
+            font-size: 20px;
+            line-height: 1.1;
+            letter-spacing: -0.6px;
+        }
+    }
+}

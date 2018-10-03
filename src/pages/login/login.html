@@ -1,0 +1,90 @@
+<!--main-form-->
+<form class="main-form full-page"
+      [formGroup]="loginForm"
+      (ngSubmit)="submitLoginForm()">
+
+    <ion-header>
+
+        <ion-navbar>
+            <ion-title>Log In</ion-title>
+        </ion-navbar>
+
+    </ion-header>
+
+    <ion-content scroll="true" padding>
+        <div class="content-flexed-col">
+
+            <fieldset>
+
+                <ion-label stacked>Email</ion-label>
+
+                <div>
+                    <ion-input type="email"
+                               name="email"
+                               jbInputOnFocus
+                               [formControl]="loginForm.controls['email']"></ion-input>
+                </div>
+
+                <div *ngIf="validatorService.isErrored(loginForm.controls['email'])"
+                     [@SlideIn]
+                     class="main-form__validator-error">
+                    Please enter valid email.
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+
+                <ion-label stacked>Password</ion-label>
+
+                <div class="main-form__with-btn">
+
+                    <button *ngIf="isId" type="button"
+                            (click)="biometricLogin()"
+                            [ngClass]="{
+                                    'face-id': idType === 'face',
+                                    'touch-id': idType === 'touch'
+                                    }">
+                    </button>
+
+                    <ion-input name="password"
+                               jbInputOnFocus
+                               [type]="showPassword ? 'text' : 'password'"
+                               [ngClass]="{'main-form__icon': isId}"
+                               [formControl]="loginForm.controls['password']"></ion-input>
+                </div>
+
+                <div *ngIf="validatorService.isErrored(loginForm.controls['password'])"
+                     [@SlideIn]
+                     class="main-form__validator-error">
+                    Please enter password.
+                </div>
+            </fieldset>
+
+            <div class="links">
+
+                <button class="link" type="button"
+                        (click)="showPassword = !showPassword">
+                    {{ showPassword ? 'Hide':'Show' }} Password
+                </button>
+                <button class="link" type="button"
+                        (click)="openPaswordModal()">
+                    Forgot your password?
+                </button>
+
+            </div>
+
+            <button ion-button
+                    block
+                    class="content-flexed-col__bottomed"
+                    [class.spinner]="isLoad"
+                    [disabled]="!loginForm.valid">
+                Log in
+            </button>
+
+        </div>
+
+    </ion-content>
+
+</form>
+<!--/main-form-->

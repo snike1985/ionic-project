@@ -1,0 +1,59 @@
+<!--referrals__title-->
+<h4 class="referrals__title invite">Invite friends</h4>
+<!--/referrals__title-->
+
+<button ion-button block
+        class="referrals__btn"
+        (click)="shareInvitation()">
+    Share invitation
+</button>
+
+<!--referrals__invited-->
+<div class="referrals__invited"
+     *ngIf="invitedModel.length">
+
+    <!--referrals__invited-head-->
+    <div class="referrals__invited-head">Invited friends</div>
+    <!--/referrals__invited-head-->
+
+    <!--referrals__invited-body-->
+    <div class="referrals__invited-body">
+
+        <!--referrals__invited-item-->
+        <div class="referrals__invited-item" *ngFor="let item of invitedModel;">
+
+            <a href="mailto:ruslan@gmail.com">{{ item.email }}</a>
+
+            <div class="referrals__invited-status"
+                 [ngClass]="{
+                                            'sent': item.status === 'sent',
+                                            'reg': item.status === 'reg',
+                                            'plus': item.status === 'income'}">
+
+                <span *ngIf="item.status === 'sent'">Sent</span>
+                <span *ngIf="item.status === 'reg'">Reg</span>
+                <span *ngIf="item.status === 'income'">${{ item.income }}</span>
+            </div>
+
+        </div>
+        <!--/referrals__invited-item-->
+
+    </div>
+    <!--/referrals__invited-body-->
+
+    <!--referrals__invited-loading-->
+    <div class="referrals__invited-loading" *ngIf="isLoad && invitedModel.length" [@SlideIn]>
+        Loading…
+    </div>
+    <!--/referrals__invited-loading-->
+
+</div>
+<!--/referrals__invited-->
+
+<!--referrals__invited-empty-->
+<div class="referrals__invited-empty"
+     *ngIf="!invitedModel.length">
+    You have not invited any friends yet. Start inviting. Get $25 for each frient deposited more
+    than $100
+</div>
+<!--/referrals__invited-empty-->

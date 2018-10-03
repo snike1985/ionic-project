@@ -1,0 +1,144 @@
+
+jb-page-wallet {
+
+}
+
+.wallet-page {
+    background-color: #f3f5f9;
+
+    &__navigate {
+
+        .container {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        &-item {
+            display: inline-block;
+            padding: 13px 0;
+            margin-left: 24px;
+            border-bottom: 2px solid transparent;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: $rubik-font;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1.43;
+            letter-spacing: -0.5px;
+            text-align: center;
+            color: rgba(44, 43, 43, 0.5);
+            text-transform: capitalize;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &.active {
+                border-color: color($colors, primary);
+                color: #2c2b2b;
+            }
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+.transactions-fixed-head {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 44px;
+    padding: 12px 16px;
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+
+    &.fixed {
+        opacity: 1;
+        pointer-events: fill;
+    }
+
+    .custom-select {
+        margin-right: 12px;
+    }
+}
+
+.transactions {
+    background-color: #fff;
+
+    &__head {
+        display: flex;
+        align-items: center;
+        height: 44px;
+        padding: 12px 16px;
+        z-index: 1;
+
+        .custom-select {
+            margin-right: 12px;
+        }
+    }
+
+    &__list {
+        padding: 0 16px;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        position: relative;
+        justify-content: space-between;
+        padding: 16px 16px 16px 32px;
+        font-size: 14px;
+        font-weight: normal;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.14;
+        letter-spacing: normal;
+        text-align: right;
+        color: #2b2b2c;
+
+        &.up {
+            color: #15a735;
+
+            .transactions__name {
+                color: #2b2b2c;
+            }
+        }
+
+        &.pending {
+            color: #e89a00;
+
+            .transactions__name {
+                color: inherit;
+            }
+        }
+
+    }
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 24px;
+        height: 24px;
+        transform: translate(0, -50%);
+
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    &__name {
+        display: block;
+        padding-right: 5px;
+        font-weight: 500;
+        font-family: $rubik-font;
+    }
+}

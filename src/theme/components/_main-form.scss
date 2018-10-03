@@ -1,0 +1,454 @@
+
+.main-form {
+
+    .ion-label-heped{
+        display: flex;
+        justify-content: space-between;
+        a{
+            font-weight: 400;
+            color: #0a94f1;
+            text-decoration: none;
+            border-bottom: 1px dashed #0a94f1;
+            &.activated{
+                border-bottom-style: solid;
+            }
+        }
+    }
+
+    .links {
+        margin: -16px 0 24px;
+    }
+    fieldset {
+        border: none;
+        padding: 0;
+        margin: 0 0 24px;
+    }
+    label,
+    .label,
+    .label-md,
+    .label-md[stacked] {
+        margin: 0 0 8px;
+        font-family: $roboto-font;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1.33;
+        color: color($colors, dark);
+    }
+
+    .input,
+    .select,
+    ion-datetime {
+        border: solid 1px color($colors, border-color);
+        padding: 0 $text-input-padding;
+        transition: $transition-duration ease-in-out;
+        transition-property: border-color;
+
+        &.focus {
+            border-color: color($colors, primary);
+        }
+    }
+
+    input,
+    input.text-input,
+    textarea,
+    .select,
+    .datetime-text {
+        width: 100% !important;
+        height: $text-input-height;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        background-color: color($colors, white);
+        padding: 0 8px !important;
+        font-family: $roboto-font;
+        font-size: $text-input-font-size;
+        line-height: 1.5;
+        color: color($colors, dark);
+        -webkit-transform: translate3d(0, 0, 0) !important;
+        transform: translate3d(0, 0, 0) !important;
+    }
+    .select {
+        line-height: 2.5;
+    }
+
+    input{
+        &.mastercard{
+            background-image: url(../../assets/icon/input-master-card.svg);
+            background-repeat: no-repeat;
+            background-position: calc(100% - 8px) 50%;
+        }
+        &.visa,
+        &.visaelectron{
+            background-image: url(../../assets/icon/input-visa.svg);
+            background-repeat: no-repeat;
+            background-position: calc(100% - 8px) 50%;
+        }
+    }
+    textarea {
+        padding: 8px 9px !important;
+        font-size: 14px;
+        line-height: 1.43;
+    }
+    .input {
+        padding: 0;
+
+        &.ng-invalid.ng-touched {
+            border-color: color($colors, danger);
+        }
+    }
+    .item-select {
+        padding: 0 !important;
+
+        .item-inner {
+            padding: 0 !important;
+            border-bottom: none !important;
+        }
+        .select-icon {
+            height: auto;
+
+            .select-icon-inner {
+                left: auto;
+                border-top: 4px solid;
+                border-right: 3px solid transparent;
+                border-left: 3px solid transparent;
+                color: color($colors, dark);
+            }
+        }
+    }
+    .datetime-text {
+        display: flex;
+        align-items: center;
+    }
+    .radio {
+
+        .radio-icon {
+            visibility: visible;
+            width: 20px;
+            height: 20px;
+            border: none !important;
+
+            .radio-inner {
+                display: none;
+            }
+            &:before {
+                display: inline-block;
+                border: 2px solid color($colors, primary);
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                overflow: hidden;
+                content: '';
+            }
+            &:after {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                background: color($colors, primary);
+                width: 10px;
+                height: 10px;
+                margin: -5px 0 0 -5px;
+                border-radius: 50%;
+                overflow: hidden !important;
+                transition: -webkit-transform .28s cubic-bezier(0.420, 0.000, 0.000, 1.650);
+                transition: transform .28s cubic-bezier(0.420, 0.000, 0.000, 1.650);
+                -webkit-transform: scale(0);
+                transform: scale(0);
+                content: '';
+            }
+            &.radio-checked {
+
+                &:after {
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+            }
+        }
+
+        &[ng-reflect-checked] ~ .radio-icon:after {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    }
+    .checkbox {
+
+        .checkbox-icon {
+            visibility: visible;
+            width: 20px;
+            height: 20px;
+            border-radius: 0;
+            border: solid 2px #4a4a4b;
+            transition: border-color .28s cubic-bezier(0.420, 0.000, 0.000, 1.650);
+
+            .checkbox-inner {
+                display: none;
+            }
+            &:before {
+                display: none;
+            }
+            &:after {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                background: color($colors, primary);
+                width: 10px;
+                height: 10px;
+                margin: -5px 0 0 -5px;
+                overflow: hidden !important;
+                transition: transform .28s cubic-bezier(0.420, 0.000, 0.000, 1.650);
+                transform: scale(0);
+                content: '';
+            }
+            &.checkbox-checked {
+                background-color: #fff;
+                border-color: color($colors, primary);
+
+                &:after {
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+            }
+        }
+
+        &[ng-reflect-checked] ~ .checkbox-icon:after {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    }
+    &__validator-error {
+        padding-top: 8px;
+        font-family: $roboto-font;
+        font-size: 12px;
+        line-height: 1.33;
+        color: color($colors, danger-text);
+    }
+    &__title {
+        font-family: $rubik-font;
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: -0.4px;
+        color: color($colors, dark);
+    }
+    &__pin {
+        position: relative;
+
+        .input {
+            opacity: 0;
+            width: 200%;
+            left: -50%;
+            position: absolute;
+            border: none !important;
+        }
+        .ng-invalid.ng-touched {
+
+            & + .main-form__pin-wrap > div {
+                border-color: color($colors, danger);
+
+                &.focus {
+                    border-color: color($colors, primary);
+
+                    & + div {
+                        border-color: color($colors, danger);
+                    }
+                }
+            }
+        }
+    }
+    &__pin-wrap {
+        display: flex;
+        justify-content: space-between;
+        pointer-events: none;
+        background: #fff;
+
+        > div {
+            position: relative;
+            width: 38px;
+            height: 40px;
+            background: color($colors, white);
+            border: solid 1px color($colors, border-color);
+            font-family: $rubik-font;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.9;
+            letter-spacing: -0.6px;
+            text-align: center;
+            transition: border-color $transition-duration ease-in-out;
+
+            &:after {
+                opacity: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 13px;
+                height: 13px;
+                border-radius: 50%;
+                background: color($colors, dark);
+                transform: translate(-50%, -50%);
+                transition: opacity $transition-duration ease-in-out;
+                content: '';
+            }
+            &.active {
+
+                &:after {
+                    opacity: 1;
+                }
+            }
+            &.focus {
+                border-color: color($colors, primary);
+
+                & + div {
+                    border-color: color($colors, border-color);
+                }
+            }
+        }
+    }
+    &__icon,
+    &__text {
+        position: relative;
+
+        input.text-input {
+            padding-right: 40px;
+        }
+    }
+    &__radio-btns {
+
+        > div {
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 16px;
+        }
+        .label {
+            display: inline-block;
+            vertical-align: middle;
+            margin-bottom: 0;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        ion-radio {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+    }
+    &__datepicker {
+        position: relative;
+        overflow: hidden;
+    }
+    &__searchbar {
+        position: relative;
+        background: #fff;
+
+        button {
+            padding: 0;
+            border: none;
+            background: none;
+
+            &:after {
+                @include absoluteCenterY();
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 4px 3px 0 3px;
+                border-color: #2b2b2c transparent transparent transparent;
+                content: '';
+            }
+        }
+        &.country {
+
+            .input {
+                padding-right: 24px;
+            }
+
+            button {
+                @include absolutePosition();
+
+                &:after {
+                    right: 12px;
+                }
+            }
+        }
+        &.phone {
+
+            .input {
+                padding-left: 52px;
+            }
+
+            button {
+                position: absolute;
+                height: 100%;
+                width: 52px;
+                top: 0;
+                left: 0;
+
+                img {
+                    @include absoluteCenterY();
+                    left: 12px;
+                    width: 16px;
+                    height: 12px;
+                }
+                &:after {
+                    left: 34px;
+                }
+            }
+        }
+    }
+    &__with-btn {
+        position: relative;
+
+        button {
+            z-index: 1;
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 40px;
+            background: transparent;
+            border: none;
+            padding: 0;
+
+            &:after {
+                position: absolute;
+                width: 24px;
+                height: 24px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                content: '';
+            }
+            &.face-id:after {
+                background: url(../../assets/icon/icon-face-id.svg) no-repeat;
+                background-size: contain;
+            }
+            &.touch-id:after {
+                background: url(../../assets/icon/icon-fingerprint.svg) no-repeat;
+                background-size: contain;
+            }
+        }
+    }
+    &__with-text {
+        position: relative;
+
+        span {
+            z-index: 1;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            right: 8px;
+            top: 0;
+            height: 100%;
+            width: 40px;
+            font-family: $rubik-font;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            color: color($colors, dark);
+        }
+    }
+    &__double-fieldset {
+        display: flex;
+        justify-content: space-between;
+        fieldset {
+            width: calc(50% - 8px);
+            flex: 0 0 calc(50% - 8px);
+        }
+    }
+}

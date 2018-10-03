@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 48 48">
+    <defs>
+        <path id="a" d="M0 0h48v48H0z"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g fill-rule="nonzero" transform="translate(12 14)">
+            <rect width="24" height="3" fill="#EB001B" rx="1.5"/>
+            <rect width="24" height="3" y="8.5" fill="#2682EE" rx="1.5"/>
+            <rect width="24" height="3" y="17" fill="#2682EE" rx="1.5"/>
+        </g>
+        <g fill="#FFF">
+            <use style="mix-blend-mode:color" xlink:href="#a"/>
+            <use fill-opacity=".3" xlink:href="#a"/>
+        </g>
+    </g>
+</svg>

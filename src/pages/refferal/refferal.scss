@@ -1,0 +1,344 @@
+.referrals {
+    height: 100%;
+    padding-top: 8px;
+
+    .container {
+        box-shadow: 0 6px 12px 0 rgba(26, 55, 79, 0.08);
+    }
+
+    &__btn {
+        margin-bottom: 24px;
+
+        &_small-margin {
+            margin-bottom: 16px;
+        }
+    }
+    &__info {
+        margin-bottom: 8px;
+        padding-bottom: 0 !important;
+
+        h3 {
+            margin-bottom: 12px;
+            margin-top: 0;
+            font-family: $rubik-font;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+            text-align: center;
+            color: color($colors, dark);
+
+            span {
+                display: block;
+                font-family: $roboto-font;
+                font-weight: 400;
+            }
+        }
+    }
+    &__info-card {
+        display: flex;
+        align-items: center;
+        padding: 8px 16px;
+        margin-bottom: 5px;
+        background-color: #f3f5f9;
+
+        > div {
+
+            &:first-child {
+                padding-right: 16px;
+                border-right: solid 2px rgba(0, 0, 0, 0.1);
+                font-family: $rubik-font;
+                font-size: 11px;
+                font-weight: 500;
+                letter-spacing: -0.3px;
+                text-transform: uppercase;
+                color: color($colors, dark);
+                line-height: 1.2;
+            }
+            &:last-child {
+                padding-left: 16px;
+            }
+        }
+    }
+    &__info-fiat {
+        font-family: $rubik-font;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 1.33;
+        letter-spacing: -1px;
+        color: color($colors, dark);
+
+        span {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 14px;
+            line-height: 1.43;
+            letter-spacing: -0.5px;
+        }
+    }
+    &__info-crypto {
+        font-size: 12px;
+        line-height: 1.33;
+        color: color($colors, dark);
+    }
+    &__tabs {
+
+    }
+    &__title {
+        position: relative;
+        margin-top: 0;
+        margin-bottom: 24px;
+        padding-left: 32px;
+        font-family: $rubik-font;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.25;
+        letter-spacing: -0.5px;
+        color: color($colors, dark);
+
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            transform: translateY(-50%);
+            background-size: contain;
+            content: '';
+        }
+        &.invite:before {
+            background-image: url(../../assets/icon/icon-sms.svg);
+        }
+        &.link:before {
+            background-image: url(../../assets/icon/icon-link.svg);
+        }
+    }
+    &__invited {
+        background-color: #f3f5f9;
+        padding: 0 16px 14px;
+        color: color($colors, dark);
+    }
+    &__invited-head {
+        padding: 16px 0;
+        border-bottom: solid 2px rgba(0, 0, 0, 0.08);
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1.33;
+    }
+    &__invited-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 11px 0;
+        border-bottom: solid 2px rgba(0, 0, 0, 0.08);
+
+        a {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            font-size: 14px;
+            line-height: 1.43;
+            color: color($colors, dark);
+            text-decoration: none;
+        }
+    }
+    &__invited-status {
+        position: relative;
+        padding-left: 20px;
+        margin-left: 10px;
+        font-family: $rubik-font;
+        font-size: 11px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: -0.3px;
+        color: color($colors, dark);
+
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 16px;
+            height: 16px;
+            transform: translateY(-50%);
+            background-size: contain;
+            content: '';
+        }
+        &.sent:before {
+            background-image: url(../../assets/icon/icon-pending-small.svg);
+        }
+        &.plus {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.43;
+            letter-spacing: -0.5px;
+            color: #15a735;
+
+            &:before {
+                background-image: url(../../assets/icon/icon-plus-small.svg);
+            }
+        }
+        &.reg:before {
+            background-image: url(../../assets/icon/icon-confirmed-small.svg);
+        }
+    }
+    &__invited-empty {
+        padding: 24px;
+        background-color: #f3f5f9;
+        font-size: 14px;
+        line-height: 1.43;
+        text-align: center;
+        color: color($colors, dark);
+    }
+    &__invited-loading {
+        padding: 23px 0 9px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.33;
+        text-align: center;
+        color: rgba(43, 43, 44, .5);
+        backface-visibility: hidden;
+    }
+    &__hint {
+        margin-bottom: 24px;
+        font-size: 14px;
+        line-height: 1.43;
+        color: color($colors, dark);
+
+        dt, dd {
+            display: inline;
+        }
+        dt {
+            font-family: $rubik-font;
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+    }
+    &__links {
+
+    }
+    &__links-item {
+        margin-bottom: 16px;
+    }
+    &__links-title {
+        margin-top: 0;
+        margin-bottom: 8px;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1.33;
+        color: color($colors, dark);
+    }
+    &__links-wrap {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 12px;
+        background-color: #f3f5f9;
+
+        span {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            font-size: 16px;
+            line-height: 1.5;
+            color: color($colors, dark);
+        }
+        button {
+            margin-left: 10px;
+            background: transparent;
+            padding: 0;
+            border: 0;
+            font-family: $rubik-font;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.43;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            color: color($colors, primary);
+        }
+    }
+    &__summary {
+        padding: $main-padding;
+        background-color: #f3f5f9;
+    }
+    &__summary-item {
+        margin-bottom: 21px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        h5 {
+            margin-top: 0;
+            margin-bottom: 0;
+            padding-bottom: 8px;
+            border-bottom: solid 3px rgba(0, 0, 0, 0.08);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5;
+            color: color($colors, dark);
+        }
+    }
+    &__table {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: solid 2px rgba(0, 0, 0, 0.08);
+        color: color($colors, dark);
+
+        > div:first-child {
+
+            .referrals__table-head:after {
+                position: absolute;
+                left: 0;
+                height: 3px;
+                width: 100%;
+                margin-top: 8px;
+                background: rgba(0, 0, 0, 0.08);
+                content: '';
+            }
+        }
+    }
+    &__table-head {
+        font-family: $rubik-font;
+        padding: 11px 0 8px;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: -0.3px;
+        text-transform: uppercase;
+    }
+    &__table-body {
+        padding: 11px 0 12px;
+        font-size: 14px;
+        line-height: 1.43;
+
+        &.green {
+            font-weight: 500;
+            color: #15a735;
+        }
+    }
+    &__form {
+        margin-bottom: 16px;
+        background-color: #f3f5f9;
+
+        fieldset {
+            margin: 0 0 8px;
+        }
+        .input {
+            border: solid 1px transparent;
+        }
+        input,
+        input.text-input {
+            height: 38px;
+            padding: 0 10px !important;
+            line-height: 1.5;
+        }
+    }
+    &__form-btns {
+        display: flex;
+        justify-content: space-between;
+
+        .button {
+            padding: 0 19px;
+        }
+    }
+}

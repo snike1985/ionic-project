@@ -1,0 +1,207 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+@import "ionic.globals";
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+    white: #ffffff,
+    primary: #0a94f1,
+    secondary: #15a735,
+    danger: #f83750,
+    danger-text: #f71432,
+    light: #f4f4f4,
+    dark: #2b2b2c,
+    dark-light: rgba(44, 43, 43, .5),
+    dark-blue-grey: #111a3d,
+    black: #000,
+    border-color: #dbdee3,
+    main-bg-color: #F3F5F9
+);
+
+//Action-sheet
+$action-sheet-ios-border-radius: 0;
+$action-sheet-ios-title-color: #8f8e94;
+$action-sheet-ios-title-font-size: 14px;
+$action-sheet-ios-border-color: #dbe0eb;
+$action-sheet-ios-button-text-color: color($colors, primary);
+$action-sheet-ios-button-font-size: 14px;
+$action-sheet-ios-button-min-height: 48px;
+$action-sheet-ios-title-padding: 12px 16px;
+$action-sheet-ios-button-padding: 12px 16px;
+
+$action-sheet-md-border-radius: 0;
+$action-sheet-md-title-color: #8f8e94;
+$action-sheet-md-title-font-size: 14px;
+$action-sheet-md-border-color: #dbe0eb;
+$action-sheet-md-button-text-color: color($colors, primary);
+$action-sheet-md-button-font-size: 14px;
+$action-sheet-md-button-min-height: 48px;
+$action-sheet-md-title-padding: 12px 16px;
+$action-sheet-md-button-padding: 12px 16px;
+
+//Buttons
+$button-font-size: 14px;
+
+$button-md-padding-top: 2px;
+$button-md-height: 48px;
+$button-md-small-height: 40px;
+$button-md-border-radius: 0;
+$button-md-font-size: $button-font-size;
+$button-md-outline-border-width: 2px;
+$button-md-box-shadow: none;
+$button-md-margin-top: 0;
+$button-md-margin-bottom: 0;
+$button-md-margin-start: 0;
+
+$button-ios-padding-top: 2px;
+$button-ios-height: 48px;
+$button-ios-small-height: 40px;
+$button-ios-border-radius: 0;
+$button-ios-font-size: $button-font-size;
+$button-ios-outline-border-width: 2px;
+$button-ios-box-shadow: none;
+$button-ios-margin-top: 0;
+$button-ios-margin-bottom: 0;
+$button-ios-margin-start: 0;
+
+//Input
+$text-input-md-background-color: color($colors, white);
+$text-input-md-margin-top: 0;
+$text-input-md-margin-end: 0;
+$text-input-md-margin-bottom: 0;
+$text-input-md-margin-start: 0;
+$text-input-md-margin-right: 0;
+
+$text-input-ios-background-color: color($colors, white);
+$text-input-ios-margin-top: 0;
+$text-input-ios-margin-end: 0;
+$text-input-ios-margin-bottom: 0;
+$text-input-ios-margin-start: 0;
+$text-input-ios-margin-right: 0;
+$text-input-ios-margin-left: 0;
+
+$text-input-height: 40px;
+$text-input-font-size: 16px;
+$text-input-padding: 8px;
+
+//Navbar
+$navbar-ios-height: 64px;
+$navbar-md-height: 56px;
+
+//Searchbar
+$searchbar-md-padding-horizontal: 0;
+$searchbar-md-background-color: #fff;
+$searchbar-md-toolbar-input-background: #fff;
+$searchbar-md-border-color: transparent;
+$searchbar-md-input-search-icon-color: #2b2b2c;
+$searchbar-md-input-box-shadow: none;
+$searchbar-md-min-height: 24px;
+$searchbar-md-input-height: 24px;
+$searchbar-md-input-text-color: #2b2b2c;
+$searchbar-md-input-clear-icon-svg: "<svg width='24' height='24' viewBox='0 0 24 24'><path fill='#2C2B2B' fill-rule='nonzero' d='M17 8.007L15.993 7 12 10.993 8.007 7 7 8.007 10.993 12 7 15.993 8.007 17 12 13.007 15.993 17 17 15.993 13.007 12z'/></svg>";
+$searchbar-md-input-clear-icon-color: #2b2b2c;
+$searchbar-md-input-clear-icon-size: 24px;
+$searchbar-md-input-search-icon-size: 13px;
+
+$searchbar-ios-padding-horizontal: 0;
+$searchbar-ios-background-color: #fff;
+$searchbar-ios-toolbar-input-background: #fff;
+$searchbar-ios-border-color: transparent;
+$searchbar-ios-input-search-icon-color: #2b2b2c;
+$searchbar-ios-min-height: 24px;
+$searchbar-ios-input-height: 24px;
+$searchbar-ios-input-text-color: #2b2b2c;
+$searchbar-ios-input-clear-icon-svg: "<svg width='24' height='24' viewBox='0 0 24 24'><path fill='#2C2B2B' fill-rule='nonzero' d='M17 8.007L15.993 7 12 10.993 8.007 7 7 8.007 10.993 12 7 15.993 8.007 17 12 13.007 15.993 17 17 15.993 13.007 12z'/></svg>";
+$searchbar-ios-input-clear-icon-color: #2b2b2c;
+$searchbar-ios-input-clear-icon-size: 24px;
+$searchbar-ios-input-search-icon-size: 13px;
+
+//Grid
+$grid-padding-width: 16px;
+
+//List
+$list-ios-margin-bottom: 8px;
+
+$list-md-margin-bottom: 8px;
+
+//Font vars
+$font-family-md-base: "Roboto", "Helvetica Neue", sans-serif;
+$font-family-ios-base: "Roboto", "Helvetica Neue", sans-serif;
+$font-family-wp-base: "Roboto", "Helvetica Neue", sans-serif;
+
+$roboto-font: "Roboto", sans-serif;
+$rubik-font: "Rubik", Arial, sans-serif;
+
+//Transition
+$transition-duration: .15s;
+
+//Main colors
+$header-bg: color($colors, dark-blue-grey);
+
+//Main variables
+$main-margin-end: 8px;
+$main-padding: 16px;
+
+//Segment
+$segment-button-ios-background-color-activated: transparent;
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+// Fonts
+@import 'assets/fonts/fonts';
+//Shared Styles
+@import 'main';
+@import 'mixins';
+@import 'components';
+
+
+

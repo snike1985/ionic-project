@@ -1,0 +1,42 @@
+.custom-date {
+    overflow: hidden;
+    display: block;
+    padding: 5px 0;
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    text-transform: none;
+    color: transparentize(#2b2b2c, .5);
+
+    &__wrap {
+        position: relative;
+        display: inline-block;
+        padding: 16px;
+
+        &:before {
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            transform: translate(0,-50%);
+            height: 1px;
+            width: 50vw;
+            background-color: transparentize(#2b2b2c, .5);
+            content: '';
+        }
+
+        &:after {
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            transform: translate(0,-50%);
+            height: 1px;
+            width: 50vw;
+            background-color: transparentize(#2b2b2c, .5);
+            content: '';
+        }
+    }
+}

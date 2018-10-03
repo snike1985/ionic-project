@@ -1,0 +1,42 @@
+
+<div class="notifications main-form">
+
+    <!--notifications__table-->
+    <div class="notifications__table">
+
+        <!--notifications__table-head-->
+        <div class="notifications__table-row notifications__table-head">
+
+            <div>Event</div>
+
+            <div>
+                <div>Push</div>
+                <div>Email</div>
+                <div>SMS</div>
+            </div>
+
+        </div>
+        <!--/notifications__table-head-->
+
+        <!--notifications__table-row-->
+        <div class="notifications__table-row" *ngFor="let rowItem of objectKeys(table)">
+
+            <div class="notifications__table-title">{{ table[ rowItem ][ 'title' ] }}</div>
+
+            <div>
+                <div *ngFor="let item of objectKeys(table[ rowItem ][ 'sections' ])">
+
+                    <ion-checkbox [(ngModel)]="table[ rowItem ][ 'sections' ][ item ][ 'isActive' ]"
+                                  [disabled]="table[ rowItem ][ 'sections' ][ item ][ 'isDisabled' ]"
+                                  (ionChange)="changeModel()"></ion-checkbox>
+
+                </div>
+            </div>
+
+        </div>
+        <!--/notifications__table-row-->
+
+    </div>
+    <!--/notifications__table-->
+
+</div>
